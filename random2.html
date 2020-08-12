@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Random Variables: Variance and Covariance &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Distributions" href="distrib.html" />
+    <link rel="prev" title="Random Variables: Distribution and Expectation" href="random.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/random2.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-walk">
+   Random Walk
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sum-of-independent-random-variables">
+   Sum of Independent Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#covariance">
+   Covariance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#correlation">
+   Correlation
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="random-variables-variance-and-covariance">
+<h1>Random Variables: Variance and Covariance<a class="headerlink" href="#random-variables-variance-and-covariance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="random-walk">
+<h2>Random Walk<a class="headerlink" href="#random-walk" title="Permalink to this headline">¶</a></h2>
+<p>Let’s consider an example where we have a particle, starting at position 0, that
+can perform random walks in one dimension. At each time step, the particle moves
+either one step to te right or left with equal probability (a <em>symmetric</em> random
+walk), and the move at each time step is independent of all other moves (like a
+coin flip).</p>
+<p>The expected position of the particle after <span class="math notranslate nohighlight">\(n\)</span> movies is back at 0, but how far
+from 0 should we typically expect the particle to end up?</p>
+<p>Let <span class="math notranslate nohighlight">\(+1\)</span> be a right move, and <span class="math notranslate nohighlight">\(-1\)</span> be a left move, and we can describe the
+probability space here as the set of all sequences of length <span class="math notranslate nohighlight">\(n\)</span> over the
+alphabet, <span class="math notranslate nohighlight">\(\{\pm 1\}\)</span>, each having equal probability <span class="math notranslate nohighlight">\(\frac{1}{2^n}\)</span>. Let the
+random variable <span class="math notranslate nohighlight">\(S_n\)</span> denote the position of the particle relative to our
+starting point 0) after <span class="math notranslate nohighlight">\(n\)</span> moves. Thus, we can write</p>
+<div class="math notranslate nohighlight">
+\[S_n = X_1+X_2+\cdots+X_n\]</div>
+<p>The expectation <span class="math notranslate nohighlight">\(S_n\)</span> can be easily computed as follows. Since <span class="math notranslate nohighlight">\(\mathbb{E}[X_i]=
+(\frac{1}{2}\times 1)+(\frac{1}{2}\times(-1))=0\)</span>, applying the linearity of
+expectation gives <span class="math notranslate nohighlight">\(\mathbb{E}[S_n]=\sum_{i=1}^n\mathbb{E}[X_i]=0\)</span>.</p>
+<p>What we are really asking is: what is the expected value of <span class="math notranslate nohighlight">\(|S_n|\)</span>, the
+<em>distance</em> of the particle from 0? Rather than consider the random variable
+<span class="math notranslate nohighlight">\(|S_n|\)</span>, which is difficult to work with due to the absolute value operator, we
+will instead look at the <span class="math notranslate nohighlight">\(S_n^2\)</span>, which makes all deviations from positive. We
+will square root it in the end.</p>
+<p>Now, we claim that the expected square distance after <span class="math notranslate nohighlight">\(n\)</span> steps is equal to <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[S_n^2]=\mathbb{E}[(X_1+X_2+\cdots+X_n)^2]=\mathbb{E}[\sum_{i=1}^n
+X_i^2+2\sum_{i&lt;j}X_iX_j]+\sum_{i=1}^n\mathbb{E}[X_i^2]+2\sum_[i&lt;j]\mathbb{E}[X_i
+X_j]\]</div>
+<p>To proceed, we must compute <span class="math notranslate nohighlight">\(\mathbb{E}[X_i^2]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]\)</span> for <span class="math notranslate nohighlight">\(i
+\not=j\)</span>. Since <span class="math notranslate nohighlight">\(X_i\)</span> can only take values <span class="math notranslate nohighlight">\(\pm 1\)</span>, <span class="math notranslate nohighlight">\(\mathbb{E}[X_i^2]=1\)</span>. As for
+<span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]\)</span>, note <span class="math notranslate nohighlight">\(X_iX_j =+1\)</span> when <span class="math notranslate nohighlight">\(X_i=X_j=+1\)</span> or <span class="math notranslate nohighlight">\(X_i=X_j=-1\)</span>, and
+otherwise <span class="math notranslate nohighlight">\(X_iX_j=-1\)</span>. Thus,</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{P}[X_iX_j=1]=\mathbb{P}[(X_i=X_j=+1)\vee(X_i=X_j=-1)]=\mathbb{P}[X_i=
+X_j=+1]+\mathbb{P}[X_i=X_j=-1]\\=\mathbb{P}[X_i=+1]\times\mathbb{P}[X_j=+1]+
+\mathbb{P}[X_i=-1]\times\mathbb{P}[X_j=-1]=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}\)</span>$</p>
+<p>where the second equality follows from the fact that the events are mutually
+exclusive, while the third equality follows from the independence of the events.
+In a similar vein, <span class="math notranslate nohighlight">\(\mathbb{P}[X_iX_j]=\frac{1}{2}\)</span>, hence, <span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]=
+0\)</span>.</p>
+<p>Plugging in these values gives <span class="math notranslate nohighlight">\(\mathbb{E}[S_n^2]=\sum_{i=1}^n+2\sum_{i&lt;j}0=n\)</span>.</p>
+</div>
+<p>We see the expected squared distance from 0 is <span class="math notranslate nohighlight">\(n\)</span>. However, we cannot argue
+that <span class="math notranslate nohighlight">\(\mathbb{E}[|S_n|]=\sqrt{\mathbb{E}[S_n^2]}=\sqrt{n}\)</span>.</p>
+<p>For more general random variables <span class="math notranslate nohighlight">\(X\)</span> with expectation <span class="math notranslate nohighlight">\(\mu\)</span>, what we are really
+interested in is the expected squared distance from the mean, <span class="math notranslate nohighlight">\(\mathbb{E}[(X-\mu
+)^2]\)</span>. In our example above, <span class="math notranslate nohighlight">\(\mu=-\)</span>, so the definitions are equivalent.</p>
+<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span> with expectation <span class="math notranslate nohighlight">\(\mu\)</span>, the <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is
+defined to be</p>
+<div class="math notranslate nohighlight">
+\[Var(X)=\mathbb{E}[(X-\mu)^2]\]</div>
+<p>The square root <span class="math notranslate nohighlight">\(\sigma(X):=\sqrt{Var(X)}\)</span> is the <strong>standard deviation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>An alternative definition states that <span class="math notranslate nohighlight">\(Var(X)=\mathbb{E}{X^2}-\mu^2\)</span>, which may
+be easier to compute in certain scenarios.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[Var(X)=\mathbb{E}[(X-\mu)^2]=\mathbb{E}[X^2-2\mu X+\mu^2]=\mathbb{E}[X^2]-
+2\mu\mathbb{E}[X]+\mu^2=\mathbb{E}[X^2]-\mu^2\]</div>
+</div>
+<p>Another important property states that for any random variable <span class="math notranslate nohighlight">\(X\)</span> and constant
+<span class="math notranslate nohighlight">\(c\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[Var(cX)=c^2 Var(X)\]</div>
+</div>
+<div class="section" id="sum-of-independent-random-variables">
+<h2>Sum of Independent Random Variables<a class="headerlink" href="#sum-of-independent-random-variables" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For independent random variables <span class="math notranslate nohighlight">\(X, Y\)</span>, we have <span class="math notranslate nohighlight">\(\mathbb{E}[X]\mathbb{E}[Y]\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[XY]=\sum_a\sum_bab\times\mathbb{P}[X=a,Y=b]\\=\sum_a\sum_bab\times
+\mathbb{P}[X=a]\times\mathbb{P}[Y=b]\\=(\sum_aa\times\mathbb{P}[X=a])\times(\sum
+_bb\times\mathbb{P}[Y=b])\\=\mathbb{E}[X]\mathbb{E}[Y]\end{split}\]</div>
+</div>
+<p>We will now use the above property to make a conclusion about variance.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For independent random variables <span class="math notranslate nohighlight">\(X, Y\)</span>, we have <span class="math notranslate nohighlight">\(Var(X+Y)=Var(X)+Var(Y)\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var(X+Y)=\mathbb{E}[(X+Y)^2]-(\mathbb{E}[X+Y])^2=\mathbb{E}[X^2]+\mathbb{E}
+[Y^2]+2\mathbb{E}[XY]-(\mathbb{E}[X]=\mathbb{E}[Y])^2\\=(\mathbb{E}[X^2]-
+\mathbb{E}[X]^2)+(\mathbb{E}[Y^2]-\mathbb{E}[Y]^2)+2(\mathbb{E}[XY]-\mathbb{E}
+[X]\mathbb{E}[Y])\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(X, Y\)</span> are independent,</p>
+<div class="math notranslate nohighlight">
+\[Var(X+Y)=Var(X)+Var(Y)=2(\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y])=Var(X)+
+Var(Y)\]</div>
+</div>
+<p>Neither of the above two proofs are valid when <span class="math notranslate nohighlight">\(X, Y\)</span> are not independent.</p>
+</div>
+<div class="section" id="covariance">
+<h2>Covariance<a class="headerlink" href="#covariance" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>covariance</strong> of random variables <span class="math notranslate nohighlight">\(X, Y\)</span>, denoted <span class="math notranslate nohighlight">\(Cov(X, Y)\)</span>, is defined
+as</p>
+<div class="math notranslate nohighlight">
+\[Cov(X, Y)=\mathbb{E}[(X-\mu_X)(Y-\mu_Y)]=\mathbb{E}[XY]-\mathbb{E}[X]
+\mathbb{E}[Y]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_X = \mathbb{E}[X]\)</span> and <span class="math notranslate nohighlight">\(\mu_Y = \mathbb{E}[Y]\)</span>.</p>
+<p>Several key properties of covariance:</p>
+<ol class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(X, Y\)</span> are independent, <span class="math notranslate nohighlight">\(Cov(X,Y)=0\)</span>. However, the converse is not true.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Cov(X,X) = Var(X)\)</span></p></li>
+<li><p>Covariance is <em>bilinear</em>; for any collection of random variables <span class="math notranslate nohighlight">\(\{X_1,
+\cdots ,X_n\}\)</span>,<span class="math notranslate nohighlight">\(\{Y_1,\cdots,Y_m\}\)</span> and fixed constants <span class="math notranslate nohighlight">\(\{a_1,\cdots,a_n\}\)</span>,
+<span class="math notranslate nohighlight">\(\{b_1,\cdots,b_m\}\)</span>,<span class="math notranslate nohighlight">\(Cov(\sum_{i=1}^na_iX_i,\sum_{j=1}^mb_jY_j)=\sum_{i=1}^n\sum_{j=1}^ma_ib_j
+Cov(X_i,Y_j)\)</span>.</p></li>
+</ol>
+<p>For general random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)\]</div>
+<p>While the sign of <span class="math notranslate nohighlight">\(Cov(X,Y)\)</span> is informative of how <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are associated,
+its magnitude is difficult to interpret.</p>
+</div>
+<div class="section" id="correlation">
+<h2>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are random variables with <span class="math notranslate nohighlight">\(\sigma{X)&gt;0\)</span> and <span class="math notranslate nohighlight">\(\sigma(Y)&gt;0\)</span>,
+then the <strong>correlation</strong> of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[Corr(X,Y)=\frac{Cov(X,Y)}{\sigma(X)\sigma(Y)}\]</div>
+<p>Correlation is more useful than covariance because the former always ranges
+between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(+1\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu_X\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[Y]=\mu_Y\)</span>, and define <span class="math notranslate nohighlight">\(\tilde{X} =
+\frac{X-\mu_X}{\sigma(X)}\)</span> and <span class="math notranslate nohighlight">\(\tilde{Y}=\frac{Y-\mu_Y}{\sigma(Y)}\)</span>. Then,
+<span class="math notranslate nohighlight">\(\mathbb{E}[\tilde{X}^2]=\mathbb{E}[\tilde{Y}^2]=1\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}0\leq\mathbb{E}[(\tilde{X}-\tilde{Y})^2]=\mathbb{E}[\tilde{X}^2]+\mathbb{E}
+[\tilde{Y}^2]-2\mathbb{E}[\tilde{X}\tilde{Y}]=2-2\mathbb{E}[\tilde{X}\tilde{Y}]
+\\
+0\leq\mathbb{E}[(\tilde{X}+\tilde{Y})^2]=\mathbb{E}[\tilde{X}^2]+\mathbb{E}
+[\tilde{Y}^2]+2\mathbb{E}[\tilde{X}\tilde{Y}]=2+2\mathbb{E}[\tilde{X}\tilde{Y}]
+\end{split}\]</div>
+<p>This implies <span class="math notranslate nohighlight">\(-1\leq\mathbb{E}[\tilde{X}\tilde{Y}]\leq +1\)</span>. Noting <span class="math notranslate nohighlight">\(\mathbb{E}
+[\tilde{X}]=\mathbb{E}[\tilde{Y}]=0\)</span>, we obtain <span class="math notranslate nohighlight">\(Corr(X,Y)=Cov(\tilde{X},
+\tilde{Y})=\mathbb{E}[\tilde{X}\tilde{Y}]\)</span>. Hence, <span class="math notranslate nohighlight">\(-1\leq Corr(X,Y)\leq+1\)</span>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="random.html" title="previous page">Random Variables: Distribution and Expectation</a>
+    <a class='right-next' id="next-link" href="distrib.html" title="next page">Distributions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

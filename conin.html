@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Concentration Inequalities &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Law of Large Numbers and Central Limit Theorem" href="largenum.html" />
+    <link rel="prev" title="Continuous Probabilities" href="continuous.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/conin.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markov-s-inequality">
+   Markov’s Inequality
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalized-markov-s-inequality">
+     Generalized Markov’s Inequality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chebyshev-s-inequality">
+   Chebyshev’s Inequality
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="concentration-inequalities">
+<h1>Concentration Inequalities<a class="headerlink" href="#concentration-inequalities" title="Permalink to this headline">¶</a></h1>
+<p>Suppose we have a biased die, but we don’t know what the bias is. A good
+estimate of the bias might come from calculating the average, and comparing
+that with the expected value. Since <span class="math notranslate nohighlight">\(\mathbb{E}[S_n]=np\)</span>, our estimator <span class="math notranslate nohighlight">\(p'\)</span>
+has the expected value of <span class="math notranslate nohighlight">\(\mathbb{E}[p']=\frac{1}{n}\mathbb{E}[S_n]=p\)</span>. This
+tells us that if <span class="math notranslate nohighlight">\(n\)</span> is sufficiently large, we can expect <span class="math notranslate nohighlight">\(p'\)</span> to be close to p,
+thanks to the Law of Large Numbers.</p>
+<p>How large does <span class="math notranslate nohighlight">\(n\)</span> need to be? There is no good answer. We can never guarantee
+with absolute certainty that <span class="math notranslate nohighlight">\(|p'-p| \leq \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is some
+error. Instead, we can state that <span class="math notranslate nohighlight">\(|p'-p| \leq \epsilon\)</span> with a confidence <span class="math notranslate nohighlight">\(1-
+\delta\)</span>, such that <span class="math notranslate nohighlight">\(\mathbb{P}[|p'-p|\leq \epsilon]\geq 1-\delta\)</span>. There is a
+small probability <span class="math notranslate nohighlight">\(\delta\)</span> that the error is more than <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p>To put this into a formula:</p>
+<div class="math notranslate nohighlight">
+\[n\geq\frac{1}{4\epsilon^2\delta}\]</div>
+<p>In order to prove this, let’s take a detour to Markov’s Inequality.</p>
+<div class="section" id="markov-s-inequality">
+<h2>Markov’s Inequality<a class="headerlink" href="#markov-s-inequality" title="Permalink to this headline">¶</a></h2>
+<p>For a <em>nonnegative random variable X (i.e. <span class="math notranslate nohighlight">\(X(\omega) \geq 0, \forall \omega\in
+\Omega\)</span>)</em> with a finite mean,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X\geq c]\leq\frac{\mathbb{E}[X]}{c}\]</div>
+<p>for any positive constant <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathscr{A}\)</span> denote the range of <span class="math notranslate nohighlight">\(X\)</span>, and consider any constant <span class="math notranslate nohighlight">\(c\in
+\mathscr{A}\)</span>. Then,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X]=\sum_{a\in\mathbb{A}}a\times\mathbb{P}[X=a]  \geq\sum_{a\geq c}
+a\times\mathbb{P}[X=a]\geq\sum_{a\geq c} c\times\mathbb{P}[X=a] \\
+= c\sum_{a\geq c}\mathbb{P}[X=a]=c\times\mathbb{P}[X\geq c]\end{split}\]</div>
+</div>
+<p>The proof starts with the definition of expectation, then uses the fact that <span class="math notranslate nohighlight">\(X\)</span>
+is a nonnegative random variable, and rearranging the last inequality gives us
+the desired result.</p>
+<p>We can define a slicker proof using the indicator function <span class="math notranslate nohighlight">\(I\{\bullet\}\)</span>,
+defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}I{statement}=\begin{cases}1,&amp;\text{if statement is true}\\0,&amp;\text{if
+statement is false}\end{cases}\end{split}\]</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> is a nonnegative random variable and <span class="math notranslate nohighlight">\(c&gt;0\)</span>, we have, <span class="math notranslate nohighlight">\(\forall \omega
+\in \Omega\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{gather}X(\omega)\geq cI\{X(\omega)\geq c\},\end{gather}\]</div>
+<p>since the right hand side is 0 if <span class="math notranslate nohighlight">\(X(\omega)&lt;c\)</span> and is <span class="math notranslate nohighlight">\(c\)</span> if <span class="math notranslate nohighlight">\(X(\omega)&gt;c\)</span>.
+Multiply both sides by <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> and sum over <span class="math notranslate nohighlight">\(\omega\in\Omega\)</span> to
+give,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]\geq c\mathbb{E}[I\{X\geq c\}]=c\times\mathbb{P}[X\geq c]\]</div>
+<p>where the first inequality follows from (1) and the fact that <span class="math notranslate nohighlight">\(\mathbb{P}[
+\omega] \geq 0, \forall \omega \in \Omega\)</span> , while the last inequality follows
+from the fact that <span class="math notranslate nohighlight">\(I\{X\geq c\}\)</span> is an indicator random variable.</p>
+</div>
+<div class="section" id="generalized-markov-s-inequality">
+<h3>Generalized Markov’s Inequality<a class="headerlink" href="#generalized-markov-s-inequality" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(Y\)</span> be an arbitrary random variable with finite mean. For any positive
+constants <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(r\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[|Y|\geq c]\leq\frac{\mathbb{E}[|Y|7r]}{c^r}\]</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>For <span class="math notranslate nohighlight">\(c&gt;0\)</span> and <span class="math notranslate nohighlight">\(r&gt;0\)</span> (if <span class="math notranslate nohighlight">\(r\)</span> were negative, the last inequality below does not
+hold), we have,</p>
+<div class="math notranslate nohighlight">
+\[|Y|^r\geq |Y|^rI\{|Y|\geq c\}\geq c^rI\{|Y|\geq c\}\]</div>
+<p>Taking the expectations of both sides,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[|Y|^r]\geq c^r\mathbb{E}[I\{|Y|\geq c\}]=c^r\mathbb{P}[|Y|\geq c]\]</div>
+<p>Divde by <span class="math notranslate nohighlight">\(c^r\)</span> to find the desired result.</p>
+</div>
+</div>
+</div>
+<div class="section" id="chebyshev-s-inequality">
+<h2>Chebyshev’s Inequality<a class="headerlink" href="#chebyshev-s-inequality" title="Permalink to this headline">¶</a></h2>
+<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span> with a finite expectation<span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[|X-\mu|\geq c]\leq \frac{Var(X)}{c^2}\]</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(Y=(X-\mu)^2\)</span>, and note that <span class="math notranslate nohighlight">\(\mathbb{E}[Y]=\mathbb{E}[(X-\mu)^2]=Var(X)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[|X-\mu|\geq c\implies Y=(X-\mu)^2\geq c^2\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\(\mathbb{P}[|X-\mu|\geq c]=\mathbb{P}[Y\geq c^2]\)</span>. Since <span class="math notranslate nohighlight">\(Y\)</span> is
+nonnegative, applying Markov’s inequality yields</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[|X-\mu|\geq c]=\mathbb{P}[Y\geq c^2]\leq \frac{\mathbb{E}[Y]}{c^2}=
+\frac{Var(X)}{c^2}\]</div>
+</div>
+<p>And here’s another proof using the generalized theorem:</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Let <span class="math notranslate nohighlight">\(Y=X-\mu\)</span>. Then, since <span class="math notranslate nohighlight">\(|Y|^2=(X-\mu)^2\)</span>, we have <span class="math notranslate nohighlight">\(\mathbb{E}[|Y|^2]=\mathbb
+{E}[(X-\mu)^2]=Var(X)\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[|X-\mu|\geq c\implies Y=(X-\mu)^2\geq c^2\]</div>
+<p>follows from apllying Generalized Markov’s Inequality to <span class="math notranslate nohighlight">\(Y=X-\mu\)</span> with <span class="math notranslate nohighlight">\(r=2\)</span>.</p>
+</div>
+<p>Stopping to consider what Chebyshev’s Inequality means, it tells us that the
+probability of any given deviation, <span class="math notranslate nohighlight">\(c\)</span>, from the mean is at most <span class="math notranslate nohighlight">\(\frac{Var(X)}
+{c^2}\)</span>. If the variance is small, the deviation probability is small. This has
+the immediate consequence of making the following statement true:</p>
+<p>For any random variable <span class="math notranslate nohighlight">\(X\)</span> with finite expectation <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span> and
+finite standard deviation <span class="math notranslate nohighlight">\(\sigma=\sqrt{Var(X)}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[|X-\mu|\geq k\sigma]\leq\frac{1}{k^2}\]</div>
+<p>for any constant <span class="math notranslate nohighlight">\(k&gt;0\)</span>, where <span class="math notranslate nohighlight">\(c=k\sigma\)</span> in Chebyshev’s Inequality.</p>
+<p>This means that, for example, the probability of deviating from the mean by more
+than 2 standard deviations on either side is at most <span class="math notranslate nohighlight">\(\frac{1}{4}\)</span>, allowing
+standard deviation to be a good working definition of the “spread” of a
+distribution.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="continuous.html" title="previous page">Continuous Probabilities</a>
+    <a class='right-next' id="next-link" href="largenum.html" title="next page">Law of Large Numbers and Central Limit Theorem</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Random Variables: Distribution and Expectation &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Random Variables: Variance and Covariance" href="random2.html" />
+    <link rel="prev" title="Conditional Probability" href="condprob.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/random.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributions">
+   Distributions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-distribution">
+     Bernoulli Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-distribution">
+     Binomial Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypergeometric-distribution">
+     Hypergeometric Distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joint-distributions">
+   Joint Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expectation">
+   Expectation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linearity-of-expectation">
+     Linearity of Expectation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="random-variables-distribution-and-expectation">
+<h1>Random Variables: Distribution and Expectation<a class="headerlink" href="#random-variables-distribution-and-expectation" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> on a sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is a function <span class="math notranslate nohighlight">\(X: \Omega
+\rightarrow \mathbb{R}\)</span> that assigns to each sample point <span class="math notranslate nohighlight">\(\omega\in\Omega\)</span> a
+real number <span class="math notranslate nohighlight">\(X(\omega)\)</span>.</p>
+<p>In this chapter, we discuss <em>discrete</em> random variables, which take values in a
+range that is finite or countably infinite. This means even though we define <span class="math notranslate nohighlight">\(X\)</span>
+to map <span class="math notranslate nohighlight">\(\Omega\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, the actual set of values <span class="math notranslate nohighlight">\(\{X(\omega):\omega\in
+\Omega\)</span> that <span class="math notranslate nohighlight">\(X\)</span> takes is a discrete subset of <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.</p>
+<p>The term “random variable” is a bit of a misnomer: it is a function and there is
+nothing random about it, nor is it a variable! What is random is which sample
+point of the experiment is realized, and hence the value that the random
+variable maps the sample point to.</p>
+<div class="section" id="distributions">
+<h2>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h2>
+<p>Like with basic probability space, the most important things about any random
+variable are:</p>
+<ol class="simple">
+<li><p>The set of values it can take.</p></li>
+<li><p>The probabilities with which it takes on the values.</p></li>
+</ol>
+<p>Since a random variable is defined on a probability space, we can calculate
+these probabilities given the probabilities of the sample points. Let <span class="math notranslate nohighlight">\(a\)</span> be any
+number in the range of a random variable <span class="math notranslate nohighlight">\(X\)</span>. Then, the set</p>
+<div class="math notranslate nohighlight">
+\[\{\omega\in\Omega:X(\omega)=a\}\]</div>
+<p>is an <em>event</em> in the sample space because it is a subset of <span class="math notranslate nohighlight">\(\Omega\)</span>. We usually
+abbreviate this event to simply “<span class="math notranslate nohighlight">\(X=a\)</span>”, and we discuss its probability <span class="math notranslate nohighlight">\(\mathbb
+{P}[X=a]\)</span>. The collection of these probabilities for all possible values of <span class="math notranslate nohighlight">\(a\)</span>
+is known as the distribution of the random variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Formally, the <strong>distribution</strong> of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is the
+collection of values <span class="math notranslate nohighlight">\(\{(a, \mathbb{P}[X=a]): a\in\mathscr{A}\}\)</span>, where
+<span class="math notranslate nohighlight">\(\mathscr{A}\)</span> is the set of all possible values taken by <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Note the collection of events <span class="math notranslate nohighlight">\(X=a\)</span>, for <span class="math notranslate nohighlight">\(a\in\mathscr{A}\)</span>, satisfy two key
+properties:</p>
+<ol class="simple">
+<li><p>Any two events <span class="math notranslate nohighlight">\(X=a_1\)</span> and <span class="math notranslate nohighlight">\(X=a_2\)</span> with <span class="math notranslate nohighlight">\(a1\not=a_2\)</span> are disjoint.</p></li>
+<li><p>The union of these events is equal to the entire sample space <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+</ol>
+<p>The collection of events thus form a <em>partition</em> of the sample space.</p>
+<div class="section" id="bernoulli-distribution">
+<h3>Bernoulli Distribution<a class="headerlink" href="#bernoulli-distribution" title="Permalink to this headline">¶</a></h3>
+<p>A simple yet useful probability distribution is the <em>Bernoulli</em> distribution
+of a random variable which takes value in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{P}[X=i]=\begin{cases}p,&amp;\text{if i = 1,}\\1-p,&amp;\text{if i =0,}
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0\leq p\leq1\)</span>. We say that <span class="math notranslate nohighlight">\(X\)</span> is dsitributed as a <em>Bernoulli</em> random
+variable with parameter <span class="math notranslate nohighlight">\(p\)</span>, and write <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span>.</p>
+</div>
+<div class="section" id="binomial-distribution">
+<h3>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">¶</a></h3>
+<p>The binomial distribution is the discrete probability distribution of the number
+of successes in a sequence of <span class="math notranslate nohighlight">\(n\)</span> independent experiments, each asking a yes
+–no question, and each with its own boolean-valued outcome with probability <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]=\binom{n}{i}p^i(1-p)^{n-i}, \text{ for } i = 0, 1, \cdots, n\]</div>
+<p>A random variable with this distribution is called a <em>binomial</em> random variable,
+and we write <span class="math notranslate nohighlight">\(X \sim Bin(n,p)\)</span>.</p>
+</div>
+<div class="section" id="hypergeometric-distribution">
+<h3>Hypergeometric Distribution<a class="headerlink" href="#hypergeometric-distribution" title="Permalink to this headline">¶</a></h3>
+<p>The <em>hypergeometric</em> distribution is a discrete probability distribution that
+describes the probability of <span class="math notranslate nohighlight">\(k\)</span> successes (random draws for which the object
+drawn has a specified feature) in <span class="math notranslate nohighlight">\(n\)</span> draws, without replacement, from a finite
+population of size <span class="math notranslate nohighlight">\(N\)</span> that contains exactly <span class="math notranslate nohighlight">\(B\)</span> objects with that feature,
+wherein each draw is either a success or a failure.</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[Y=k]=\binom{n}{k}\frac{\frac{B!}{(B-k)!}\frac{(N-B)!}{(N-B-(n-k))!}
+}{\frac{N!}{(N-n)!}}=\frac{\binom{B}{k}\binom{N-B}{n-k}}{\binom{N}{n}}, \text{
+ for } k \in \{ 0, 1, \cdots, n \}\]</div>
+<p>A random variable with this distribution is called a <em>hypergeometric</em> random
+variable with parameters <span class="math notranslate nohighlight">\(N, B, n\)</span>, and we write <span class="math notranslate nohighlight">\(Y \sim Hypergeometric(N,B,n)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="joint-distributions">
+<h2>Joint Distributions<a class="headerlink" href="#joint-distributions" title="Permalink to this headline">¶</a></h2>
+<p>We are often interested in multiple random variables on the same sample space.
+The <strong>joint distribution</strong> for two discrete random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is the
+collection of values <span class="math notranslate nohighlight">\(\{((a, b),\mathbb{P}[X=a,Y=b]):a\in\mathscr{A},b\in
+\mathscr{B}\}\)</span>, where <span class="math notranslate nohighlight">\(\mathscr{A}\)</span> is the set of all possible values taken by
+<span class="math notranslate nohighlight">\(X\)</span>, and <span class="math notranslate nohighlight">\(\mathscr{B}\)</span> is the set of all possible values taken by <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>When we are a joint distribution for <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, the distribution <span class="math notranslate nohighlight">\(\mathbb{P}
+[X=a]\)</span> for <span class="math notranslate nohighlight">\(X\)</span> is called the <em>marginal dsitribution</em> for <span class="math notranslate nohighlight">\(X\)</span>, and can be found
+by “summing” over the values for <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=a]=\sum_{b\in\mathscr{B}}\mathbb{P}[X=a,Y=b]\]</div>
+<p>The marginal distribution for <span class="math notranslate nohighlight">\(Y\)</span> is analogous. In the case of more than 2
+variables, we sum over all possible values for all other variables. In some
+cases, it may be obtained more simply.</p>
+<p>Random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are said to be <strong>independent</strong> if the events <span class="math notranslate nohighlight">\(X=a\)</span>
+and <span class="math notranslate nohighlight">\(Y=b\)</span> are independent for all values <span class="math notranslate nohighlight">\(a, b\)</span>. Equivalently, the joint
+distribution of independent random variables decomposes as</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=a,Y=b]=\mathbb{P}[X=A]\mathbb{P}[Y=b],\forall a,b\]</div>
+</div>
+<div class="section" id="expectation">
+<h2>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>expectation</strong> of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{a\in\mathscr{A}}a \times\mathbb{P}[X=a]\]</div>
+<p>where the sum is over all possible values taken by the random variable.</p>
+<p>The expectation can be thought of as <em>summarizing</em> the distribution into a more
+compact, convenient form that is also easier to compute. The expectation can be
+thought of as a “typical value” for the random variable (though note it may not
+be a discrete value that <span class="math notranslate nohighlight">\(X\)</span> can actually take).</p>
+<div class="section" id="linearity-of-expectation">
+<h3>Linearity of Expectation<a class="headerlink" href="#linearity-of-expectation" title="Permalink to this headline">¶</a></h3>
+<p>For any two random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> on the same probability space, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X+Y]=\mathbb{E}[X]+\mathbb{E}[Y]\]</div>
+<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[cX]=c\mathbb{E}[X]\]</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{a\in\mathscr{A}}a \times\mathbb{P}[X=a]\]</div>
+<p>Consider a particular <span class="math notranslate nohighlight">\(a\times\mathbb{P}[X=a]\)</span> in the above sum. By definition,
+<span class="math notranslate nohighlight">\(\mathbb{P}[X=a]\)</span> is the sum of <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> over those sample points
+<span class="math notranslate nohighlight">\(\omega\)</span> for which <span class="math notranslate nohighlight">\(X(\omega)=a\)</span>. We know every sample point <span class="math notranslate nohighlight">\(\omega\in\Omega\)</span>
+is in exactly one of those events <span class="math notranslate nohighlight">\(X=a\)</span>. This means we can write out the above
+definition as</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{\omega\in\Omega} X(\omega)\times\mathbb{P}[\omega]\]</div>
+<p>Now we apply this to <span class="math notranslate nohighlight">\(\mathbb{E}[X+Y]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X+Y]=\sum_{\omega\in\Omega}(X+Y)(\omega)\times\mathbb{P}[\omega]\\
+=\sum_{\omega\in\Omega}(X(\omega)+Y(\omega))\times\mathbb{P}[\omega]\\
+=\sum_{\omega\in\Omega}(X(\omega)\times\mathbb{P}[\omega])+
+\sum_{\omega\in\Omega}(Y(\omega)\times\mathbb{P}[\omega])\\
+=\mathbb{E}[X]+\mathbb{E}[Y]\end{split}\]</div>
+<p>This completes the proof of the first equality; the proof of the second is left
+as an exercise.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="condprob.html" title="previous page">Conditional Probability</a>
+    <a class='right-next' id="next-link" href="random2.html" title="next page">Random Variables: Variance and Covariance</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

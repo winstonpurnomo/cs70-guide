@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Discrete Probability &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conditional Probability" href="condprob.html" />
+    <link rel="prev" title="Probability" href="probability.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/discretep.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-monty-hall-problem">
+   The Monty Hall Problem
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discrete-probability">
+<h1>Discrete Probability<a class="headerlink" href="#discrete-probability" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>random experiment</strong> consists of drawing a sample of <span class="math notranslate nohighlight">\(k\)</span> elements from a set
+<span class="math notranslate nohighlight">\(S\)</span> of cardinality <span class="math notranslate nohighlight">\(n\)</span>. The possible outcomes are exactly the objects we counted
+in the previous chapter.</p>
+<p>Let’s say we toss a coin four times. <span class="math notranslate nohighlight">\(S=\{H,T\}\)</span>, and we are drawing 4 elements
+with replacement. An example of a sample point is <span class="math notranslate nohighlight">\(HTHT\)</span>, and the sample space
+<span class="math notranslate nohighlight">\(\Omega\)</span> has 16 elements.</p>
+<p>A <strong>probability space</strong> is a sample space <span class="math notranslate nohighlight">\(\Omega\)</span>, together with a probability
+<span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> (also denoted <span class="math notranslate nohighlight">\(Pr[\omega]\)</span>) for each sample point <span class="math notranslate nohighlight">\(\omega\)</span>,
+such that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\leq\mathbb{P}[\omega],\forall\omega\in\Omega\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{\omega\in\Omega}\mathbb{P}[\omega]\)</span>, the sum of probabilities over
+all outcomes is 1.</p></li>
+</ul>
+<p>The easiest way to assign probabilities to sample points is to do so uniformly.</p>
+<p>The probability of an event <span class="math notranslate nohighlight">\(A\)</span> is the sum of probabilities of sample points in
+<span class="math notranslate nohighlight">\(A\)</span>. For any event <span class="math notranslate nohighlight">\(A\subseteq\Omega\)</span>, we define its probability to be</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A]=\sum_{\omega\in A}\mathbb{P}[\omega]\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(0\leq\mathbb{P}[A]\leq 1\)</span> for all <span class="math notranslate nohighlight">\(A\subseteq\Omega\)</span>, and <span class="math notranslate nohighlight">\(\mathbb{P}
+[\Omega]=1\)</span>.</p>
+<div class="section" id="the-monty-hall-problem">
+<h2>The Monty Hall Problem<a class="headerlink" href="#the-monty-hall-problem" title="Permalink to this headline">¶</a></h2>
+<p>In a famous game show hosted by Monty Hall, contestants are given a choice of
+three doors: behind one door is a prize, while behind the other two are goats.
+The contestant picks a door without opening it, then Hall’s assistant opens one
+of the other two doors, revealing a goat (the assistant always knows which door
+has the prize). The contestant is then given the choice of staying with their
+choice, or switching.</p>
+<p>Intuitively, all three doors have an equal probability, and with only two doors
+remaining, they still have an equal probability of having the prize. However, it
+is actually beneficial to switch!</p>
+<p>Here’s why. When the contestant first picks the door, they have a <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span>
+of picking the right door. The other doors have a <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> chance of having
+the prize. But after the assistant opens the door with the goat behind it, these
+probabilities do not change, and thus, the door you can switch to continues to
+have a <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> chace of having the prize!</p>
+<p>We can describe the outcome of the game in the form of <span class="math notranslate nohighlight">\((i, j, k)\)</span>, where <span class="math notranslate nohighlight">\(i, j,
+k \in\{1, 2, 3\}\)</span>. The values <span class="math notranslate nohighlight">\(i\)</span>i, <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(k\)</span> respectively specify the location
+of the prize, the initial door chosen by the contestant, and the door opened by
+the assistant. Taking out invalid entries (e.g., (1,2,1)) shows us there are 12
+sample points.</p>
+<p>There are six winning outcomes, each having <span class="math notranslate nohighlight">\(i=j\)</span>, and we have completely
+defined our probability space. The sum of probabilities of all outcomes is 1.</p>
+<p>Let’s supposed the contesant decides to switch doors. In order to win, their
+initial choice cannot be equal to the prize fdoor. All outcomes of this type
+cannnot be the prize door, and all outcomes of thys type correspond to a win for
+the contestant. <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]=6\times\frac{1}{9}=\frac{2}{3}\)</span></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="probability.html" title="previous page">Probability</a>
+    <a class='right-next' id="next-link" href="condprob.html" title="next page">Conditional Probability</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Continuous Probabilities &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Concentration Inequalities" href="conin.html" />
+    <link rel="prev" title="Distributions" href="distrib.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/continuous.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-random-variables">
+   Continuous Random Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cumulative-distribution-function">
+     Cumulative Distribution Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectation-and-variance">
+     Expectation and Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-distribution">
+     Joint Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independence">
+     Independence
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-distribution">
+   Exponential Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-and-variance">
+     Mean and Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geometric-vs-exponential">
+     Geometric Vs. Exponential
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-distribution">
+   Normal Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Mean and Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-independent-normal-random-variables">
+     Sum of Independent Normal Random Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="continuous-probabilities">
+<h1>Continuous Probabilities<a class="headerlink" href="#continuous-probabilities" title="Permalink to this headline">¶</a></h1>
+<p>Until now, we have focused on <em>discrete</em> sample spaces <span class="math notranslate nohighlight">\(\Omega\)</span>, where the
+number of sample points <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> is either finite or countably
+infinite, and thus, focused on discrete random variables. But many quantities
+in real life are <em>real-valued</em>. We will discuss how to extend the concepts we’ve
+seen to a <em>continuous</em> setting.</p>
+<p>Previously, we discussed uniform probability as the total probability divided by
+the number of sample points. However, in a continuous setting, there are
+infinitely many sample points <span class="math notranslate nohighlight">\(\omega\)</span>; if we assign <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> to be
+any positive value, then the sum of all probabilities <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> will
+be <span class="math notranslate nohighlight">\(\infty!\)</span> Then, <span class="math notranslate nohighlight">\(\mathbb{P}[\omega]\)</span> must be zero, which would render us
+unable to assign meaningful probabilities to any events!</p>
+<p>Consider any interval <span class="math notranslate nohighlight">\([a,b]\subseteq[0,\mathcal{l}]\)</span> where <span class="math notranslate nohighlight">\(b&gt;a\)</span>. Can we assign
+a non-zero probability value to this interval? Since the total probability
+assigned to <span class="math notranslate nohighlight">\([0, \mathcal{l}]\)</span> must be 1, and since we want our probability to be
+uniform, we can conclude the probability of an interval is proportional to its
+length</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{length of }[a,b]}{\text{length of }[0,\mathcal{l}]}=\frac{b-a}
+{\mathcal{l}}\]</div>
+<p>Note that intervals are subsets of the sample space <span class="math notranslate nohighlight">\(\Omega\)</span>, and are therefore
+<em>events</em>. Unlike discrete probability, where we assigned probabilities to
+<em>points</em> in the sample space, in continuous probability we are assigning
+probabilities to certain basic events (in this case, intervals).</p>
+<p>By specifying the probability of intervals, we have also specified the
+probability of any event <span class="math notranslate nohighlight">\(E\)</span> which can be written as the disjoint union of (a
+finite or countably infinite number of) intervals. <span class="math notranslate nohighlight">\(E=\cup_iE_i\)</span>. For then we
+can then write <span class="math notranslate nohighlight">\(\mathbb{P}[E]=\sum_i\mathbb{P}[E_i]\)</span>.</p>
+<div class="section" id="continuous-random-variables">
+<h2>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Instead of specying <span class="math notranslate nohighlight">\(\mathbb{P}[X=a]\)</span> as in the discrete case, we specify
+<span class="math notranslate nohighlight">\(\mathbb{P}[a\leq X\leq b]\)</span> for all intervals <span class="math notranslate nohighlight">\([a,b]\)</span>, using a probability
+density function.</p>
+<p>A <strong>probability density function</strong> (p.d.f.) for a real-valued random variable
+<span class="math notranslate nohighlight">\(X\)</span> is a function <span class="math notranslate nohighlight">\(f: \mathbb{R}\rightarrow\mathbb{R}\)</span> satisfying:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is non-negative: <span class="math notranslate nohighlight">\(f(x)\geq 0\)</span> for all <span class="math notranslate nohighlight">\(x\in\mathbb{R}\)</span>.</p></li>
+<li><p>The total integral of <span class="math notranslate nohighlight">\(f\)</span> is equal to 1: <span class="math notranslate nohighlight">\(\int^\infty_{-\infty}f(x)dx=1\)</span>.</p></li>
+</ol>
+<p>Then the distribution of <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[a\leq X\leq b]=\int^b_a f(x)dx,\text{ for all }a&lt;b\]</div>
+<p><span class="math notranslate nohighlight">\(f\)</span> works similary to the “histogram” we sometimes draw to picture the
+distribution of a discrete r.v. The first condition of non-negavtivity ensures
+no event has a negative robability. The second condition ensures it defines a
+valid probability distribution, because the r.v. <span class="math notranslate nohighlight">\(X\)</span> must take on real values:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X\in\mathbb{R}]=\mathbb{P}[-\infty &lt;X &lt; \infty]=\int_{-\infty}^
+\infty f(x)dx=1\]</div>
+<p>It is tempting to think of <span class="math notranslate nohighlight">\(f(x)\)</span> as a probability. However, <span class="math notranslate nohighlight">\(f(x)\)</span> itself does
+not correspond to the probability of anything, and there is no requirement that
+<span class="math notranslate nohighlight">\(f(x)\)</span> be bounded by 1. Rather, we can think of it as “probability per unit
+length” in the vicinity of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="section" id="cumulative-distribution-function">
+<h3>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">¶</a></h3>
+<p>For a continuous random variable, one often discusses the <strong>cumulative
+distribution function</strong> (c.d.f), which is the function
+<span class="math notranslate nohighlight">\(F(x)=\mathbb{P}[X\leq x]\)</span>. It is closely related to the p.d.f. of <span class="math notranslate nohighlight">\(X\)</span>, as</p>
+<div class="math notranslate nohighlight">
+\[F(x)=\mathbb{P}[X\leq x]=\int^x_{-\infty}f(z)dz\]</div>
+<p>Thus, one can describe an r.v. <span class="math notranslate nohighlight">\(X\)</span> by its c.d.f. denoted by <span class="math notranslate nohighlight">\(F(x)\)</span>, which gives
+its p.d.f. <span class="math notranslate nohighlight">\(f(x)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[f(x)=\frac{dF(x)}{dx}\]</div>
+<p>To connect to discrete probability, one might think of approximating a
+continuous random variable <span class="math notranslate nohighlight">\(X\)</span> as the set of probabilites for <span class="math notranslate nohighlight">\(X\)</span> being in one
+of a countably infinite set of intervals of length <span class="math notranslate nohighlight">\(dx\)</span> on the real line. That
+is the set of probabilities <span class="math notranslate nohighlight">\(\mathbb{P}[x_k&lt;X\leq x_k+dx]\)</span> where <span class="math notranslate nohighlight">\(x_k=k dx\)</span>
+for <span class="math notranslate nohighlight">\(k\in\mathbb{Z}\)</span>.. In this view, <span class="math notranslate nohighlight">\(\mathbb{P}[X\leq x_i]=\sum_{j\leq i}
+\mathbb{P}[x_j&lt;X\leq x_j+dx]\)</span>. Connecting to the p.d.f., we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[x_j&lt;X\leq x_j+dx]\approx f(x_j) dx\]</div>
+<p>for small “dx”, and</p>
+<div class="math notranslate nohighlight">
+\[F(x_j)=\mathbb{P}[X\leq x_i]\approx\sum_{j\leq i}f(x_j) dx\]</div>
+<p>Taking the limit as <span class="math notranslate nohighlight">\(dx\)</span> goes to zero yields the integral for the c.d.f.</p>
+</div>
+<div class="section" id="expectation-and-variance">
+<h3>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>expectation</strong> of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with the p.d.f. <span class="math notranslate nohighlight">\(f\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\int_{-\infty}^{\infty}xf(x)dx\]</div>
+<p>The integral plays the role of summation in the discrete case. Likewise, the
+<strong>variance</strong> of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with the p.d.f. <span class="math notranslate nohighlight">\(f\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[Var(X)=\mathbb{E}[(X-\mathbb{E}[X])^2]=\mathbb{E}[X^2]-\mathbb{E}[X]^2=
+\int_{-\infty}^\infty x^2f(x)dx-(\int_{-\infty}^\infty xf(x) dx)^2\]</div>
+</div>
+<div class="section" id="joint-distribution">
+<h3>Joint Distribution<a class="headerlink" href="#joint-distribution" title="Permalink to this headline">¶</a></h3>
+<p>A joint density function for two random variables <span class="math notranslate nohighlight">\(X, Y\)</span> is a function <span class="math notranslate nohighlight">\(f:
+\mathbb{R}^2\rightarrow\mathbb{R}\)</span> satisfying:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> is non-negative: <span class="math notranslate nohighlight">\(f(x,y)\geq 0\)</span> for all <span class="math notranslate nohighlight">\(x,y\in \mathbb{R}\)</span>.</p></li>
+<li><p>The total integral of <span class="math notranslate nohighlight">\(f\)</span> is equal to 1: <span class="math notranslate nohighlight">\(\int^\infty_{-\infty}
+\int^\infty_{-\infty}f(x,y)dx dxy=1\)</span>.</p></li>
+</ol>
+<p>The joint distribution of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[a\leq X\leq b,c\leq Y\leq d]=\int^d_c\int_a^bf(x,y)dx dy,\text{ for
+all }a\leq b \text{ and } c\leq d\]</div>
+<p>In analogy with the above, we can connect the joint density <span class="math notranslate nohighlight">\(f(x,y)\)</span> with
+probabilities by looking at a very small square <span class="math notranslate nohighlight">\([x, x+dx]\times[y,y+dy]\)</span> close
+to <span class="math notranslate nohighlight">\((x, y)\)</span>; then we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[x\leq X\leq x+dx, y\leq Y\leq y+dx]=\int_y^{y+dx}\int_x^{x+dx}
+f(u,v)du dv\approx f(x,y)dx dy\]</div>
+<p>Thus, we can interpret <span class="math notranslate nohighlight">\(f(x,y)\)</span> as the “probability per unit area” in the
+vicinity of <span class="math notranslate nohighlight">\((x,y)\)</span>.</p>
+</div>
+<div class="section" id="independence">
+<h3>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h3>
+<p>Two continuous random variables <span class="math notranslate nohighlight">\(X, Y\)</span> are independent if the events <span class="math notranslate nohighlight">\(a\leq X
+\leq b\)</span> and <span class="math notranslate nohighlight">\(c\leq Y\leq d\)</span> are independent for all <span class="math notranslate nohighlight">\(a\leq b\)</span> and <span class="math notranslate nohighlight">\(c\leq d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[a\leq X\leq b, c\leq Y\leq d]=\mathbb{P}[a\leq X\leq b]\mathbb{P}
+[c\leq Y\leq d]\]</div>
+<p>For small <span class="math notranslate nohighlight">\(dx, dy\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x,y)dx dx \approx \mathbb{P}[x\leq X\leq x+dx, y\leq Y\leq y+dy]\\
+=\mathbb{P}[x\leq X\leq x+dx]\mathbb{P}[y\leq Y\leq y+dy]\\
+\approx f_X(x)dx \times f_Y(y) dy=f_X(x)f_Y(y)dx dy\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_X\)</span> and <span class="math notranslate nohighlight">\(f_Y\)</span> are the marginal densities of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> respectively, so
+we get</p>
+<div class="math notranslate nohighlight">
+\[f(x,y)=f_X(x)f_Y(y)\text{ for all }x,y\in\mathbb{R}\]</div>
+</div>
+</div>
+<div class="section" id="exponential-distribution">
+<h2>Exponential Distribution<a class="headerlink" href="#exponential-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The exponential distribution is a continuous version of the geometric
+distribution. An example is, if we are waiting for an apple to fall off a tree,
+it can be at any time, not necessarily on the tick of a discrete clock. Such
+events are naturally modelled by exponential distribution:</p>
+<p>For <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with the p.d.f.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}f(x)=\begin{cases}\lambda e^{-\lambda x},&amp;\text{if }x\geq 0,\\0,&amp;
+\text{otherwise},\end{cases}\end{split}\]</div>
+<p>is called an exponential random variable with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, written as
+<span class="math notranslate nohighlight">\(X\sim Exp(\lambda)\)</span>.</p>
+<p>By definition, <span class="math notranslate nohighlight">\(f(x)\)</span> is non-negative. Moreover,</p>
+<div class="math notranslate nohighlight">
+\[\int^\infty_{-\infty}f(x)dx=\int^\infty_0\lambda e^{-\lambda x}dx=-e^
+{-\lambda x}\rvert^\infty_0=1\]</div>
+<div class="section" id="mean-and-variance">
+<h3>Mean and Variance<a class="headerlink" href="#mean-and-variance" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be an exponential random variable with parameter <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span>. Then,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\frac{1}{\lambda},\textit{ and } Var(X)=\frac{1}{\lambda^2}\]</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Using integration by parts,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\int^\infty_{-\infty}xf(x)dx=\int^\infty_0\lambda xe^{-\lambda
+x}dx=-xe^{-\lambda x}\rvert^\infty_0+\int^\infty_0e^{-\lambda x}dx=0+(-\frac{e
+^{-\lambda x}}{\lambda})\rvert^\infty_0=\frac{1}{\lambda}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\int^\infty_{-\infty}x^2f(x)dx=\int^\infty_0\lambda x^2e^{-
+\lambda x}dx=-x^2e^{-\lambda x}\rvert^\infty_0+\int^\infty_02xe^{-\lambda x}dx=
+0+\frac{2}{\lambda}\mathbb{E}[X]=\frac{2}{\lambda^2}\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[Var(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\frac{2}{\lambda^2}-\frac{1}{\lambda^2}
+=\frac{1}{\lambda^2}\]</div>
+</div>
+</div>
+<div class="section" id="geometric-vs-exponential">
+<h3>Geometric Vs. Exponential<a class="headerlink" href="#geometric-vs-exponential" title="Permalink to this headline">¶</a></h3>
+<p>Like geometric distribution, exponential distribution has a single parameter
+<span class="math notranslate nohighlight">\(\lambda\)</span> which characterizes the rate at which events happen. Note exponential
+distribution satisfies for <span class="math notranslate nohighlight">\(t\geq 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X\geq t]=\int^\infty_t\lambda e^{-\lambda x} dx=-e^{-\lambda x}
+\rvert^\infty_t=e^{-\lambda t}\]</div>
+<p>In other words, the probability that we have to wait more than time <span class="math notranslate nohighlight">\(t\)</span> for the
+event to happen is <span class="math notranslate nohighlight">\(e^{-\lambda t}\)</span>, which is an exponential decay. Consider a
+discrete-time setting where we perform one trial every <span class="math notranslate nohighlight">\(\delta\)</span> seconds (where
+we can take <span class="math notranslate nohighlight">\(\delta\rightarrow 0\)</span> to make time “continuous”), and our success
+probability <span class="math notranslate nohighlight">\(p\)</span> is <span class="math notranslate nohighlight">\(\lambda\delta\)</span>. Letting <span class="math notranslate nohighlight">\(Y\)</span> denote the time in seconds until
+we get a success,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[Y&gt;k\delta]=(1-p)^k=(1-\lambda\delta)^k, \text{ for any integer }k
+\geq 0\]</div>
+<p>For any <span class="math notranslate nohighlight">\(t&gt;0\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[Y&gt;t]=\mathbb{P}[Y&gt;(\frac{t}{\delta})\delta]=(1-\lambda\delta)^
+\frac{t}{\delta}\approx e^{-\lambda t}\]</div>
+<p>where the final approximation holds in the limit as <span class="math notranslate nohighlight">\(\delta\rightarrow 0\)</span> with
+<span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(t\)</span> fixed, ignoring the detail of rounding <span class="math notranslate nohighlight">\(\frac{t}{\delta}\)</span> to
+an integer since we are only doing an approximation.</p>
+<p>We see this distribution has the same form as the exponential distribution with
+parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> plays an analogous role <span class="math notranslate nohighlight">\(p\)</span>, though
+<span class="math notranslate nohighlight">\(\lambda\)</span> is not constrained to be <span class="math notranslate nohighlight">\(\leq\)</span> 1.</p>
+</div>
+</div>
+<div class="section" id="normal-distribution">
+<h2>Normal Distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>normal</strong>, or <strong>Gaussian</strong> distribution has two parameters <span class="math notranslate nohighlight">\(\mu\in\mathbb
+{R}\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with p.d.f.</p>
+<div class="math notranslate nohighlight">
+\[f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</div>
+<p>is called a normal random variable with parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span>, and we
+write <span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^2)\)</span>. In the special case <span class="math notranslate nohighlight">\(\mu=0\)</span> and <span class="math notranslate nohighlight">\(\sigma=1\)</span>, <span class="math notranslate nohighlight">\(X\)</span>
+is said to have the <em>standard normal distribution</em>.</p>
+<p>By definition <span class="math notranslate nohighlight">\(f(x)\geq 0\)</span>. In addition,</p>
+<div class="math notranslate nohighlight">
+\[\int^\infty_{-\infty}f(x)dx=\frac{1}{\sqrt{2\pi\sigma^2}}\int^\infty_{-\infty}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx=1\]</div>
+<p>The fact that this integral evaluates to 1 is a routine exercise in
+multivariable integral calculus.</p>
+<p>A plot of the p.d.f. reveals the classic bell curve symmetric around <span class="math notranslate nohighlight">\(x=\mu\)</span>,
+and a width determined by <span class="math notranslate nohighlight">\(\sigma\)</span>. The normal distribution has a nice property
+with respect to shifting and rescaling.</p>
+<div class="admonition-lemma admonition">
+<p class="admonition-title">Lemma</p>
+<p>If <span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^2)\)</span>, then <span class="math notranslate nohighlight">\(Y=\frac{X-\mu}{\sigma}\sim N(0,1)\)</span>.
+Equivalently, if <span class="math notranslate nohighlight">\(Y\sim N(0,1)\)</span>, then <span class="math notranslate nohighlight">\(X=\sigma Y+\mu\sim N(\mu,\sigma^2)\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Given <span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^2)\)</span>, we can calculate the distribution of <span class="math notranslate nohighlight">\(Y=\frac{X-
+\mu}{\sigma}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[a\leq Y\leq b]=\mathbb{P}[\sigma a+\mu\leq X\leq \sigma b+\mu]=
+\frac{1}{\sqrt{2\pi\sigma^2}}\int^{\sigma b+\mu}_{\sigma a+\mu} e^{-\frac{(x-
+\mu)^2}{2\sigma^2}} dx=\frac{1}{\sqrt{2\pi}}\int^b_a e^{-\frac{y^2}{2}} dy\]</div>
+</div>
+<div class="section" id="id1">
+<h3>Mean and Variance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For <span class="math notranslate nohighlight">\(X\sim N(\mu,\sigma^2)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\mu\textit{ and } Var(X)=\sigma^2\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Consider the case when <span class="math notranslate nohighlight">\(X\sim N(0,1)\)</span>. By definition, its expectation is</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\int^\infty_{-\infty}xf(x)dx=\frac{1}{\sqrt{2\pi}}\int^\infty_
+{-\infty} e^{-\frac{x^2}{2}} dx=\frac{1}{\sqrt{2\pi}}(\int^0_{-\infty}xe^{-\frac
+{x^2}{2}}dx+\int^\infty_0xe^{-\frac{x^2}{2}dx})=0\]</div>
+<p>The last step follows from the fact that <span class="math notranslate nohighlight">\(e^{-\frac{x^2}{2}}\)</span> is symmetrical
+about <span class="math notranslate nohighlight">\(x=0\)</span>, so the two integrals are the same except for the sign. For
+variance,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\frac{1}{\sqrt{2\pi}}\int^infty_
+{-\infty}x^2e^{-\frac{x^2}{2}}dx\\=\frac{1}{\sqrt{2\pi}}(-xe^{-\frac{x^2}{2}})
+\rvert^\infty_{-\infty}+\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-\frac{
+x^2}{2}}dx\\=\frac{1}{\sqrt{2\pi}}\int^\infty_{-\infty}e^{-\frac{x^2}{2}}dx=1\end{split}\]</div>
+<p>In the first line we have used the fact <span class="math notranslate nohighlight">\(\mathbb{E}[X]=0\)</span>, in the second line we
+used integration by parts, and in the last line we used the special case. So in
+the standard normal distribution, <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span> and <span class="math notranslate nohighlight">\(Var(X)=\sigma^2\)</span>.</p>
+<p>Now, consider the general case. By the Lemma, we know <span class="math notranslate nohighlight">\(Y=\frac{X-\mu}{\sigma}\)</span>
+is a standard normal random variable, so <span class="math notranslate nohighlight">\(\mathbb{E}[Y]=0\)</span> and <span class="math notranslate nohighlight">\(Var(Y)=1\)</span>, as we
+have established above. Therefore, using linearity,</p>
+<div class="math notranslate nohighlight">
+\[0=\mathbb{E}[Y]=\mathbb{E}[\frac{X-\mu}{\sigma}]=\frac{\mathbb{E}[X]-\mu}
+{\sigma},\]</div>
+<p>and hence <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span>. For variance,</p>
+<div class="math notranslate nohighlight">
+\[1=Var(Y)=Var(\frac{X-\mu}{\sigma})=\frac{Var(X)}{\sigma^2},\]</div>
+<p>and hence <span class="math notranslate nohighlight">\(Var(X)=\sigma^2\)</span>.</p>
+</div>
+</div>
+<div class="section" id="sum-of-independent-normal-random-variables">
+<h3>Sum of Independent Normal Random Variables<a class="headerlink" href="#sum-of-independent-normal-random-variables" title="Permalink to this headline">¶</a></h3>
+<p>The sum of <em>independent</em> random normal variables is also normally distributed.
+Let <span class="math notranslate nohighlight">\(X\sim N(0,1)\)</span> and <span class="math notranslate nohighlight">\(Y\sim N(0,1)\)</span> be independent standard normal random
+variables, and suppose <span class="math notranslate nohighlight">\(a,b\in \mathbb{R}\)</span> are constants. Then <span class="math notranslate nohighlight">\(Z=aX+bY\sim
+N(0,a^2+b^2)\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Since <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, by the theorem we know the joint density of
+<span class="math notranslate nohighlight">\((X,Y)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[f(x,y)=f(x)f(y)=\frac{1}{2\pi}e^{-\frac{x^2+y^2}{2}}\]</div>
+<p>The key observation is that <span class="math notranslate nohighlight">\(f(x,y)\)</span> is rotationally symmetric around the origin
+(i.e. <span class="math notranslate nohighlight">\(f(x,y)\)</span> only depends on the value <span class="math notranslate nohighlight">\(x^2+y^2\)</span>, the distance of the point
+<span class="math notranslate nohighlight">\((x,y)\)</span> from the origin <span class="math notranslate nohighlight">\((0,0)\)</span>.</p>
+<p>Thus, <span class="math notranslate nohighlight">\(f(T(x,y))=f(x,y)\)</span> where <span class="math notranslate nohighlight">\(T\)</span> is any rotation of the plane <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>
+about the origin. It follows that for any set <span class="math notranslate nohighlight">\(A\subseteq\mathbb{R}^2\)</span>. Now,
+given any <span class="math notranslate nohighlight">\(t\in\mathbb{R}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[Z\leq t]=\mathbb{P}[aX+bY\leq t]=\mathbb{P}[(X,Y)\in A]\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is the half plane <span class="math notranslate nohighlight">\(\{(x,y)|ax+by\leq t\}\)</span>. The boundary line <span class="math notranslate nohighlight">\(ax+by=t\)</span>
+lies at a distance <span class="math notranslate nohighlight">\(d=\frac{t}{\sqrt{a^2+b^2}}\)</span> from the origin. Therefore, set
+<span class="math notranslate nohighlight">\(A\)</span> can be rotated into the set</p>
+<div class="math notranslate nohighlight">
+\[T(A)=\{(x,y)\rvert x\leq\frac{t}{\sqrt{a^2+b^2}}\}\]</div>
+<p>This rotation does not change probability:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{P}[Z\leq t]=\mathbb{P}[(X,Y)\in A]=\mathbb{P}[(X,Y)\in T(A)]\\=
+\mathbb{P}[X\leq\frac{t}{\sqrt{a^2+b^2}}]=\mathbb{P}[\sqrt{a^2+b^2}X\leq t]\end{split}\]</div>
+<p>Since the equation above holds for all <span class="math notranslate nohighlight">\(t\in\mathbb{R}\)</span>, we can conclude <span class="math notranslate nohighlight">\(Z\)</span> has
+the same distribution as <span class="math notranslate nohighlight">\(\sqrt{a^2+b^2}X\)</span>. Since <span class="math notranslate nohighlight">\(X\)</span> has standard normal
+distribution, we know by the lemma that <span class="math notranslate nohighlight">\(\sqrt{a^2+b^2}X\)</span> has normal
+distribution with mean 0 and variance <span class="math notranslate nohighlight">\(a^2+b^2\)</span>, hence we conclude <span class="math notranslate nohighlight">\(Z=aX+bY\)</span>
+has the same values.</p>
+</div>
+<p>The general case follows such that:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Let <span class="math notranslate nohighlight">\(X\sim N(\mu_X,\sigma_X^2)\)</span> and <span class="math notranslate nohighlight">\(Y\sim N(\mu_Y,\sigma^2_Y)\)</span> be independent
+normal random variables. Then for any constants <span class="math notranslate nohighlight">\(a, b \in \mathbb{R}\)</span>, the
+random variable <span class="math notranslate nohighlight">\(Z=aX+bY\)</span> is also normally distributed with mean <span class="math notranslate nohighlight">\(\mu=a\mu_X+
+b\mu_Y\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2=a^2\sigma^2_X+b^2\sigma^2_Y\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>By the lemma, <span class="math notranslate nohighlight">\(Z_1=\frac{X-\mu_X}{\sigma_X}\)</span> and <span class="math notranslate nohighlight">\(Z_2=\frac{Y-\mu_Y}{\sigma_Y}\)</span>
+are independent standard normal random variables. We can write</p>
+<div class="math notranslate nohighlight">
+\[Z=aX+bY=a(\mu_X+\sigma_XZ_1))+b(\mu_Y+\sigma_YZ_2)=(a\mu_X+b\mu_Y)+(a\sigma_X
+Z_1+b\sigma_YZ_2)\]</div>
+<p>By the previous theorem, <span class="math notranslate nohighlight">\(Z'=a\sigma_XZ_1+b\sigma_YZ_2\)</span> is normally distributed
+with mean <span class="math notranslate nohighlight">\(0\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2=a^2\sigma^2_x+b^2\sigma_Y^2\)</span>. Since <span class="math notranslate nohighlight">\(\mu=
+a\mu_X+b\mu_Y\)</span> is a constant, by the lemma we conclude that <span class="math notranslate nohighlight">\(Z=\mu+Z'\)</span> is a
+normal random variable with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="distrib.html" title="previous page">Distributions</a>
+    <a class='right-next' id="next-link" href="conin.html" title="next page">Concentration Inequalities</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

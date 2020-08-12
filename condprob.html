@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Conditional Probability &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Random Variables: Distribution and Expectation" href="random.html" />
+    <link rel="prev" title="Discrete Probability" href="discretep.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/condprob.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-inference">
+   Bayesian Inference
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-rule-and-total-probability-rule">
+   Bayes’ Rule and Total Probability Rule
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generalized-bayes-and-total-probability">
+     Generalized Bayes’ and Total Probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combinations">
+   Combinations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-events">
+     Independent Events
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intersections-of-events">
+     Intersections of Events
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unions-of-events">
+     Unions of Events
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="conditional-probability">
+<h1>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h1>
+<p>In probability theory, <strong>conditional probability</strong> is a measure of the
+probability of an event occurring given that another event has occurred. For
+example, given that you have already gotten an ace in your hand of poker, what
+is the probability you get another ace?</p>
+<p>Let <span class="math notranslate nohighlight">\(B\)</span> denote the event that you already have an ace and let <span class="math notranslate nohighlight">\(A\)</span> denote the
+event that you get another ace. In the language of conditional probability, we
+wish to calculate “the probability of A given B”, denoted by <span class="math notranslate nohighlight">\(\mathbb{P}[A|B]\)</span>.</p>
+<p>To calculate this, because event <span class="math notranslate nohighlight">\(B\)</span> is guaranteed to happen, we should not look
+at the whole sample space <span class="math notranslate nohighlight">\(\Omega\)</span>, but at the smaller sample space consisting
+of the sample points in <span class="math notranslate nohighlight">\(B\)</span>. Sum the probabilities of the sample points in <span class="math notranslate nohighlight">\(B\)</span>,
+then sum the probabilities of those where <span class="math notranslate nohighlight">\(A\)</span> occurs. For events <span class="math notranslate nohighlight">\(A, B \subseteq
+\Omega\)</span> in the same probability space such that <span class="math notranslate nohighlight">\(\mathbb{P}[B]&gt;0\)</span>, the
+conditional probability of <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A|B]=\sum_{\omega\in A\cap B}\mathbb{P}[\omega|B]=\sum_{\omega\in A
+\cap B}\frac{\mathbb{P}[\omega]}{\mathbb{P}[B]}=\frac{\mathbb{P}[A\cap B]}
+{\mathbb{P}[B]}\]</div>
+<div class="section" id="bayesian-inference">
+<h2>Bayesian Inference<a class="headerlink" href="#bayesian-inference" title="Permalink to this headline">¶</a></h2>
+<p>Conditional probability is at the heart of <em>Bayesian inference</em>, a way to update
+knowledge after making an observation. For example, after estimating <span class="math notranslate nohighlight">\(\mathbb{P}
+[A]\)</span>, event <span class="math notranslate nohighlight">\(B\)</span> occurs, and we might adjust this estimate to <span class="math notranslate nohighlight">\(\mathbb{P}[A|B]\)</span>.
+<span class="math notranslate nohighlight">\(\mathbb{P}[A]\)</span> can be thought of as a <em>prior</em> probability, reflecting our prior
+knowledge, while <span class="math notranslate nohighlight">\(\mathbb{P}[A|B]\)</span> can be interpreted as the posterior
+probability of <span class="math notranslate nohighlight">\(A\)</span> after the observation, reflecting our updated knowledge.</p>
+<p>An example would be a random person whom we suspect of having COVID-19. There is
+a test that has a false negative rate of 10%, and a false positive rate of 20%.
+In city X, we estimate 5% of the population has COVID-19; how do we update our
+probability of this person having COVID-19, after he tests negative?</p>
+<ul class="simple">
+<li><p>The sample space is all people in city X.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be the event a person chosen at random has COVID-19.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(B\)</span> be the event a person chosen at random tests positive.</p></li>
+</ul>
+<p>Rewrite the information above as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{P}[A]=0.05\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{P}[B|A]=0.9\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{P}[B|\overline{A}]=0.2\)</span></p></li>
+</ul>
+<p><em>Equation 1</em>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A|B]=\frac{\mathbb{P}[A\cap B]}{\mathbb{P}[B]}=\frac{\mathbb{P}
+[B|A]\mathbb{P}[A]}{\mathbb{P}[B]}\]</div>
+<p>where we obtained the second equality by applying the definition of conditional
+probability. We still need to calculate <span class="math notranslate nohighlight">\(\mathbb{P}[B]\)</span>:</p>
+<p><em>Equation 2</em>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[B]=\mathbb{P}[A\cap B]+\mathbb{P}[\bar{A}\cap B]=\mathbb{P}[B|
+A]\mathbb{P}[A]+\mathbb{P}[B|\bar{A}]\mathbb{P}[\bar{A}]=\mathbb{P}[B|A]
+\mathbb{P}[A]+\mathbb{P}[B|\bar{A}](1-\mathbb{P}[A])\]</div>
+<p>We combine the above two equations to get the following formula:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A|B]=\frac{\mathbb{P}[B|A]\mathbb{P}[A]}{\mathbb{P}[B|A]\mathbb{P}
+[A]+\mathbb{P}[B|\bar{A}](1-\mathbb{P}[A])}\]</div>
+</div>
+<div class="section" id="bayes-rule-and-total-probability-rule">
+<h2>Bayes’ Rule and Total Probability Rule<a class="headerlink" href="#bayes-rule-and-total-probability-rule" title="Permalink to this headline">¶</a></h2>
+<p>Equations 1 and 2 are very useful in their own right: equation 1 is the <strong>Bayes’
+Rule</strong>, while equation 2 is the <strong>Total Probability Rule</strong>.</p>
+<p>The Bayes’ Rule is useful when one wants to calculate <span class="math notranslate nohighlight">\(\mathbb{P}[A|B]\)</span> but
+given <span class="math notranslate nohighlight">\(\mathbb{P}[B|A]\)</span> instead. The Total Probability Rule is a strategy of
+dividing into cases, where either A happens or does not happen. If we know the
+probability <span class="math notranslate nohighlight">\(B\)</span> happens when <span class="math notranslate nohighlight">\(A\)</span> happens or does not happen, and also the
+probability <span class="math notranslate nohighlight">\(A\)</span> happens, we can use the Total Probability Rule to find <span class="math notranslate nohighlight">\(\mathbb{
+P}[B]\)</span>.</p>
+<div class="section" id="generalized-bayes-and-total-probability">
+<h3>Generalized Bayes’ and Total Probability<a class="headerlink" href="#generalized-bayes-and-total-probability" title="Permalink to this headline">¶</a></h3>
+<p>An event <span class="math notranslate nohighlight">\(A\)</span> is partitioned into events <span class="math notranslate nohighlight">\(n\)</span> events <span class="math notranslate nohighlight">\(A_1, \cdots, A_n\)</span> if:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(A = A_1 \cup A_2 \cup \cdots \cup A_n\)</span>, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_i \cap A_j\)</span> for all <span class="math notranslate nohighlight">\(i\not = j\)</span>(<span class="math notranslate nohighlight">\(A_1, \cdots, A_n\)</span> are mutually exclusive)</p></li>
+</ol>
+<p>In other words, each outcome in <span class="math notranslate nohighlight">\(A\)</span> belongs to exactly one of its partitions.</p>
+<p>Now, let <span class="math notranslate nohighlight">\(A_1,\cdots, A_n\)</span> be a partition of the sample space \Omega$. The Total
+Probability Rule for any event <span class="math notranslate nohighlight">\(B\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[B]=\sum_{i=1}^n\mathbb{P}[B\cap A_i]=\sum_{i=1}^n\mathbb{P}[B|A_i]
+\mathbb{P}[A_i]\]</div>
+<p>while Bayes’ rule, assuming <span class="math notranslate nohighlight">\(\mathbb{P}[B]\not =0\)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[P[A_i|B]=\frac{\mathbb{P}[B|A_i]\mathbb{P}[A_i]}{\mathbb{P}[B]}=\frac{\mathbb{
+P}[B|A_i]\mathbb{P}[A_i]}{\sum_{j=1}^n\mathbb{P}[B|A_j]\mathbb{P}[A_j]}\]</div>
+<p>where the second equality follows from the Total Probability Rule.</p>
+</div>
+</div>
+<div class="section" id="combinations">
+<h2>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h2>
+<p>In many situations, we are interested in things like <span class="math notranslate nohighlight">\(\mathbb{P}[\cup_{i=1}^nA_i
+]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}[\cap^n_{i=1}A_i]\)</span>, where the <span class="math notranslate nohighlight">\(A_i\)</span> are simple events. The
+intersection corresponds to the logical “AND” of events <span class="math notranslate nohighlight">\(A_i\)</span>, while the union
+correspond to the logical “OR” of events <span class="math notranslate nohighlight">\(A_i\)</span>.</p>
+<div class="section" id="independent-events">
+<h3>Independent Events<a class="headerlink" href="#independent-events" title="Permalink to this headline">¶</a></h3>
+<p>Two events <span class="math notranslate nohighlight">\(A, B\)</span> in the same probability space are said to be <strong>independent</strong>
+if <span class="math notranslate nohighlight">\(\mathbb{P}[A\cap B]=\mathbb{P}[A]\times\mathbb{P}[B]\)</span>.</p>
+<p>In other words, the probability of <span class="math notranslate nohighlight">\(A\)</span> is not affected by whether or not <span class="math notranslate nohighlight">\(B\)</span>
+occurs. Intuitively, <span class="math notranslate nohighlight">\(\mathbb{P}[A|B]=\mathbb{P}[A]\)</span>. Examples of independent
+events include rolls of the dice or coin flips.</p>
+<p>We can generalize our above definitions to the following two:</p>
+<p>Events <span class="math notranslate nohighlight">\(A_1,\cdots,A_n\)</span> are said to be <strong>mutually independent</strong> if for every
+subset <span class="math notranslate nohighlight">\(I\subseteq\{1,\cdots,n\}\)</span> with size <span class="math notranslate nohighlight">\(|I|\geq 2\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[\cap_{i\in I}A_i]=\prod_{i\in I}\mathbb{P}[A_i]\]</div>
+<p>An equivalent definition of the above is:</p>
+<p>Events <span class="math notranslate nohighlight">\(A_1,\cdots,A_n\)</span> are said to be <strong>mutually independent</strong> if for all $B_i
+\in {A_i, \bar{A_i}}, <span class="math notranslate nohighlight">\(i=1,\cdots,n\)</span>.</p>
+<p>In the second defintion, <span class="math notranslate nohighlight">\(2^n\)</span> constraints are imposed, vs. the <span class="math notranslate nohighlight">\(2^n-n-1\)</span> by the
+first definition. The additional <span class="math notranslate nohighlight">\(n+1\)</span> constraints imposed by the second
+definition turn out to be redundant.</p>
+</div>
+<div class="section" id="intersections-of-events">
+<h3>Intersections of Events<a class="headerlink" href="#intersections-of-events" title="Permalink to this headline">¶</a></h3>
+<p>Below is the <strong>Product Rule</strong>:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For any events <span class="math notranslate nohighlight">\(A,B\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A\cap B]=\mathbb{P}[A]\mathbb{P}[B|A].\]</div>
+<p>More generally, for events <span class="math notranslate nohighlight">\(A_1,\cdots,A_n\)</span>,</p>
+<p>Events <span class="math notranslate nohighlight">\(A_1,\cdots,A_n\)</span> are said to be <strong>mutually independent</strong> if for every
+subset <span class="math notranslate nohighlight">\(I\subseteq\{1,\cdots,n\}\)</span> with size <span class="math notranslate nohighlight">\(|I|\geq 2\)</span>,</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>The first assertion follows directly from the definiiton of <span class="math notranslate nohighlight">\(\mathbb{P}[B|A]\)</span>
+(and is in fact a special case of the second assertion with <span class="math notranslate nohighlight">\(n=2\)</span>).</p>
+<p>To prove the second assertion, we will use induction on <span class="math notranslate nohighlight">\(n\)</span>. The base case is
+<span class="math notranslate nohighlight">\(n=1\)</span>, and states <span class="math notranslate nohighlight">\(\mathbb{P}[A]=\mathbb{P}[A]\)</span>, which is true. Assume for
+arbitrary <span class="math notranslate nohighlight">\(n&gt;1\)</span>, assume the following is ture:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[\cap_{i=1}^{n-1}A_i]=\mathbb{P}[A_1]\times\mathbb{P}[A_2|A_1]\times
+\cdots\times\mathbb{P}[A_{n-1}|\cap_{i=1}^{n-2}]\]</div>
+<p>Now, apply the definition of conditional probability to the two events <span class="math notranslate nohighlight">\(A_n\)</span> and
+<span class="math notranslate nohighlight">\(\cap_{i=1}^{n-1}A_i\)</span> to deduce that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{P}[\cap{i=1}^nA_i]=\mathbb{P}[A_n\cap(\cap_{i=1}^{n-1}A_i)]=
+\mathbb{P}[A_n|\cap_{i=1}^{n-1}A_i]\times\mathbb{P}[\cap_{i=1}^{n-1}A_i]\\
+=\mathbb{P}[A_n|\cap_{i=1}^{n-1}A_i]\times\mathbb{P}[A_1]\times\mathbb{P}[A_2|
+A_1]\times\cdots\times\mathbb{P}[A_{n-1}|\cap_{i=1}^{n-2}]\end{split}\]</div>
+<p>where in the last line we use the inductive hypothesis, completing the proof.</p>
+</div>
+<p>The Product Rule is useful when we can view our sample space as a sequence of
+choices. The next few examples illustrate this point.</p>
+</div>
+<div class="section" id="unions-of-events">
+<h3>Unions of Events<a class="headerlink" href="#unions-of-events" title="Permalink to this headline">¶</a></h3>
+<p>In the union of events, you should use the <strong>Principle of Inclusion-Exclusion</strong>,
+which is recapped as:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Let <span class="math notranslate nohighlight">\(A_1, \cdots, A_n\)</span> be events in some probability space where <span class="math notranslate nohighlight">\(n\geq 2\)</span>.
+Then, we have</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[A_1\cup\cdots\cup A_n]=\sum_{k=1}^n(-1)^{k-1}\sum_{S\subseteq\{1,
+\cdots,n\}:|S|=k\mathbb{P}[\cap_{i\in S}A_i]\]</div>
+<p>where the right hand side can be written as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[\cup_{i=1}^nA_i]=\sum_{i=1}^n\mathbb{P}[A_i]-\sum_{i&lt;j}\mathbb{P}
+[A_i\cap A_j]+\sum_{i&lt;j&lt;k}\mathbb{P}[A_i\cap A_j\cap A_k]-\cdots+(-1)^{n-1}
+\mathbb{P}[A_1\cap A_2\cap \cdots A_n]\]</div>
+</div>
+<p>When <span class="math notranslate nohighlight">\(n\)</span> is large, the Inclusion-Exclusion formula is essentially useless as it
+involves computing the probability of every non-empty subset of the events, and
+there are <span class="math notranslate nohighlight">\(2^n-1\)</span> of these! Sometimes, we can just use the first few terms and
+forget the rest, as the subsequent terms give over and under-estimates that get
+better as we go along.</p>
+<p>In many events, we can even get away with only using the first term:</p>
+<ol class="simple">
+<li><p>If the events <span class="math notranslate nohighlight">\(A_1, \cdots, A_n\)</span> are mutually exclusive, then <span class="math notranslate nohighlight">\(\mathbb{P}
+[cup_{i=1}^nA_i]=\sum_{i=1}^n\mathbb{P}[A_i]\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A_1, \cdots, A_n\)</span> be events in some probability space. Then, for all
+<span class="math notranslate nohighlight">\(n\in\mathbb{Z}^+\)</span>,<span class="math notranslate nohighlight">\(\mathbb{P}[\cup_{i=1}^nA_i]\leq\sum_{i=1}^n\mathbb{P}[A_i]\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="discretep.html" title="previous page">Discrete Probability</a>
+    <a class='right-next' id="next-link" href="random.html" title="next page">Random Variables: Distribution and Expectation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

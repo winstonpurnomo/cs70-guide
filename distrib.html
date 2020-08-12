@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Distributions &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Continuous Probabilities" href="continuous.html" />
+    <link rel="prev" title="Random Variables: Variance and Covariance" href="random2.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markov.html">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/distrib.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-distribution">
+   Geometric Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-and-variance">
+     Mean and Variance
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-distribution">
+   Poisson Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Mean and Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-independent-poisson-random-variables">
+     Sum of Independent Poisson Random Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poisson-as-a-limit-of-binomial">
+     Poisson as a Limit of Binomial
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="distributions">
+<h1>Distributions<a class="headerlink" href="#distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="geometric-distribution">
+<h2>Geometric Distribution<a class="headerlink" href="#geometric-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The geometric distribution frequently occurs in applications because we are
+often interested in how long we have to wait before a certain event happens.</p>
+<p>A random variable <span class="math notranslate nohighlight">\(X\)</span> for which</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]=(1-p)^{i-1}p,\text{ for }i=1,2,3,\cdots\]</div>
+<p>is said to have the <em>geometric distribution</em> with parameter <span class="math notranslate nohighlight">\(p\)</span>, abbreviated as
+<span class="math notranslate nohighlight">\(X\sim Geometric(p)\)</span>.</p>
+<p>As a santiy check, we can verify the total probability of <span class="math notranslate nohighlight">\(X\)</span> is equal to 1:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^\infty\mathbb{P}[X=i]=\sum_{i=1}^\infty(1-p)^{i-1}p=p\sum_{i=1}^
+\infty(1-p)^{i-1}=p\times\frac{1}{1-(1-p)}=1\]</div>
+<p>If we plot the distribution of <span class="math notranslate nohighlight">\(X\)</span>, we get a curve that decreases monotonically
+by a factor of <span class="math notranslate nohighlight">\(1-p\)</span> at each step.</p>
+<div class="section" id="mean-and-variance">
+<h3>Mean and Variance<a class="headerlink" href="#mean-and-variance" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable that takes in values <span class="math notranslate nohighlight">\(\{0,1,2,\cdots\}\)</span>. Then,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{i=1}^\infty\mathbb{P}[X\geq i]\]</div>
+<p>Below is the proof of what we call the <strong>Tail Sum Formula</strong>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>For notational convenience, let’s write <span class="math notranslate nohighlight">\(p_i=\mathbb{P}[X=i]\)</span>, for <span class="math notranslate nohighlight">\(i=0,1,2,
+\cdots\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X]=(0\times p_0)+(1\times p_1)+(2\times p_2)+\cdots\\
+=p_1+(p_2+p_2)+(p_3+p_3+p_3)+\cdots=(p_1+p_2+p_3+\cdots)+(p_2+p_3+\cdots)+\cdots
+\\=\mathbb{P}[X\geq 1]+\mathbb{P}[X\geq 2]+\mathbb{P}[X\geq 3]+\cdots\end{split}\]</div>
+<p>In compact notation:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{j=1}^\infty j\times\mathbb{P}[X=j]=\sum_{j=1}^\infty\sum_
+{i=1}^j\mathbb{P}[X=j]=\sum_{i=1}^\infty\sum_{j=i}^\infty\mathbb{P}PX=j]=
+\sum_{i=1}^\infty\mathbb{P}[X\geq 1]\]</div>
+</div>
+<p>For <span class="math notranslate nohighlight">\(X\sim Geometric(p)\)</span>, we have <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\frac{1}{p}\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>The key observation is for a geometric random variable <span class="math notranslate nohighlight">\(X\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X\geq i]=(1-p)^{i-1},\text{ for }i=1,2,3,\cdots\]</div>
+<p>We can obtain this simply by summing <span class="math notranslate nohighlight">\(\mathbb{P}[X=j]\)</span> for <span class="math notranslate nohighlight">\(j\geq i\)</span>. Another
+way of seeing this is to note that the event <span class="math notranslate nohighlight">\(X\geq i\)</span> means at least <span class="math notranslate nohighlight">\(i\)</span> tosses
+are required, or the first <span class="math notranslate nohighlight">\(i-1\)</span> tosses are all tails and the probability of
+this event is <span class="math notranslate nohighlight">\((1-p)^{i-1}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}[X]=\sum_{i=1}^\infty\mathbb{P}[X\geq i]=\sum_{i=1}^\infty(1-p)^
+{i-1}=\frac{1}{1-(1-p)}=\frac{1}{p}\]</div>
+</div>
+<p>And for <span class="math notranslate nohighlight">\(X\sim Geometric(p)\)</span>, we have <span class="math notranslate nohighlight">\(Var(X)=\frac{1-p}{p^2}\)</span>.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We will show <span class="math notranslate nohighlight">\(\mathbb{E}[X(X-1)]=\frac{2(1-p)}{p^2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\mathbb{E}[X(X-1)]+\mathbb{E}[X]-
+\mathbb{E}[X]^2\\=\frac{2(1-p)}{p^2}+\frac{1}{p}-\frac{1}{p^2}=\frac{2(1-p)+p
+-1}{p^2}=\frac{1-p}{p^2}\end{split}\]</div>
+<p>To show <span class="math notranslate nohighlight">\(\mathbb{E}[X(X-1)]=\frac{2(1-p)}{p^2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{d^2x}{dy^2}(\sum_{i=0}^\infty(1-p)^i=\frac{d^2x}{dy^2}(\frac{1}{p})\\=
+\sum_{i=2}^\infty i(i-1)(1-p)^{i-2}=\frac{2}{p^3}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X(X-1)]=\sum_{i=1}^\infty i(i-1)\times\mathbb{P}[X=i]\\=\sum_{i=2}^
+\infty i(i-1)(1-p)^{i-1}p=p(1-p)\sum_{i=2}^\infty i(i-1)(1-p)^{i-2}\\=p(1-p)
+\times\frac{2}{p^3}=\frac{2(1-p)}{p^2}\end{split}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="poisson-distribution">
+<h2>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this headline">¶</a></h2>
+<p>A random variable <span class="math notranslate nohighlight">\(X\)</span> for which</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]=\frac{\lambda^i}{i!}e^{-\lambda},\text{ for }i=0,1,2,\cdots\]</div>
+<p>is said to have the <strong>Poisson distribution</strong> with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>,
+abbreviated as <span class="math notranslate nohighlight">\(X\sim Poisson(\lambda)\)</span>.</p>
+<p>As a sanity check,</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=0}^\infty\frac{\lambda^i}{i!}e^{-\lambda}=e^{-\lambda}\sum_{i=0}^
+\infty\frac{\lambda^i}{i!}=e^{-\lambda}\times e^\lambda = 1\]</div>
+<p>where in the second to last step, we used the Taylor expansion <span class="math notranslate nohighlight">\(e^x=1+x+\frac{x
+^2}{2!}+\cdots\)</span>.</p>
+<p>The Poisson distribution is used as a widely accepted model for so-called “rare
+events”, such as car accidents or ICU admission at a hospital. It is appropriate
+whenever the occurrences can be assumed to happen randomly with some constant
+density in a continuous region (of time or space), such that occurrences in
+disjoint subregions are independent.</p>
+<div class="section" id="id1">
+<h3>Mean and Variance<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>For a Poisson random variable <span class="math notranslate nohighlight">\(X\)</span> with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, we have <span class="math notranslate nohighlight">\(\mathbb{E}
+[X]=Var(X)=\lambda\)</span>,</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X]=\sum_{i=0}^\infty i\times\mathbb{P}[X=i]\\=\sum_{i=1}^\infty i
+\times\frac{\lambda^i}{i!}e^{-\lambda}=\lambda e^{-\lambda}\sum_{i=i}^\infty
+\frac{\lambda^{i-1}}{(i-1)!}\\=\lambda e^{-\lambda}e^\lambda=\lambda\end{split}\]</div>
+<p>Similarly,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{E}[X(X-1)]=\sum_{i=0}^\infty i(i-1)\times\mathbb[P][X=i]\\
+=\sum_{i=2}^\infty i(i-1)\frac{\lambda^i}{i!}e^{-\lambda}\\
+=\lambda^2e^{-\lambda}\sum_{i=2}^\infty\frac{\lambda^{i-2}}{(i-2)!}\\
+=\lambda^2e^{-\lambda}e^{\lambda}=\lambda^2\end{split}\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[Var(X)=\mathbb{E}[X^2]-\mathbb{E}[X]^2=\mathbb{E}[X(X-1)]+\mathbb{E}[X]-
+\mathbb{E}[X]^2=\lambda^2+\lambda-\lambda^2=\lambda\]</div>
+</div>
+</div>
+<div class="section" id="sum-of-independent-poisson-random-variables">
+<h3>Sum of Independent Poisson Random Variables<a class="headerlink" href="#sum-of-independent-poisson-random-variables" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Let <span class="math notranslate nohighlight">\(X\sim Poisson(\lambda)\)</span> and <span class="math notranslate nohighlight">\(Y\sim Poisson(\mu)\)</span> be independent Poisson
+random variables. Then, <span class="math notranslate nohighlight">\(X+Y\sim Poisson(\lambda+\mu)\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>For all <span class="math notranslate nohighlight">\(k=0,1,2,\cdots\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{P}[X+Y=k]=\sum_{j=0}^k\mathbb{P}[X=j,Y=k-j]\\=\sum_{j=0}^k\mathbb{P}
+[X=j]\mathbb{P}[Y=k-j]\\=\sum_{j=0}^k\frac{\lambda^j}{j!}e^{-\lambda}\frac{\mu^
+{k-j}}{(k-j)!}e^{-\mu}\\=e^{-(\lambda+\mu)}\frac{1}{k!}\sum_{j=0}^k\frac{k!}
+{j!(k-j)!}\lambda^j\mu^{k-j}\\=e^{-(\lambda+\mu)}\frac{(\lambda+\mu)^k}{k!}\end{split}\]</div>
+<p>where the second equality follows from independence, and the last equality from
+the binomial theorem.</p>
+</div>
+<p>By induction, we can conclude for <span class="math notranslate nohighlight">\(X_1,X_2,\cdots,X_n\)</span> independent Poisson
+random variables with parameters <span class="math notranslate nohighlight">\(\lambda_1,\cdots,\lambda_n\)</span>.,</p>
+<div class="math notranslate nohighlight">
+\[X_1+\cdots+X_n\sim Poisson(\lambda_1+\cdots+\lambda_n)\]</div>
+</div>
+<div class="section" id="poisson-as-a-limit-of-binomial">
+<h3>Poisson as a Limit of Binomial<a class="headerlink" href="#poisson-as-a-limit-of-binomial" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Let <span class="math notranslate nohighlight">\(X\sim Binomial(n,\frac{\lambda}{n})\)</span> where <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> is a fixed constant.
+For every <span class="math notranslate nohighlight">\(i=0,1,2,\cdots\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}{X=i}\rightarrow\frac{\lambda^i}{i!}e^{-\lambda}\text{ as }n
+\rightarrow\infty\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Fix <span class="math notranslate nohighlight">\(i\in\{0, 1, 2, \cdots \}\)</span>, and assume <span class="math notranslate nohighlight">\(n\geq i\)</span> (because <span class="math notranslate nohighlight">\(n\rightarrow
+\infty\)</span>). Then, because <span class="math notranslate nohighlight">\(X\)</span> is a binomial distribution,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]=\binom{n}{i}p^i(1-p)^{n-i}=\frac{n!}{i!(n-i)!}(\frac{\lambda}
+{n})^i(1-\frac{\lambda}{n})^{n-i}\]</div>
+<p>Collecting the factors,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]=\frac{\lambda^i}{i!}(\frac{n!}{(n-i)!}\frac{1}{n^i})(1-\frac
+{\lambda}{n})^n(1-\frac{\lambda}{n})^{-i}\]</div>
+<p>The first parenthesis above, as <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, becomes</p>
+<div class="math notranslate nohighlight">
+\[\frac{n!}{(n-i)!}\frac{1}{n^i}=\frac{n(n-1)\cdots(n-i+1)(n-i)!}{(n-i)!}\frac
+{1}{n^i}=\frac{n}{n}\frac{n-1}{n}\cdots\frac{n-i+1}{n}\rightarrow 1\]</div>
+<p>The second partnhesis becomes</p>
+<div class="math notranslate nohighlight">
+\[(1-\frac{\lambda}{n})^n\rightarrow e^{-\lambda}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(i\)</span> is fixed,</p>
+<div class="math notranslate nohighlight">
+\[(1-\frac{\lambda}{n})^{-i}\rightarrow(1-0)^{-i}=1\]</div>
+<p>Substituting these into the above equation,</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{P}[X=i]\rightarrow\frac{\lambda^i}{i!}e^-{\lambda}\]</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="random2.html" title="previous page">Random Variables: Variance and Covariance</a>
+    <a class='right-next' id="next-link" href="continuous.html" title="next page">Continuous Probabilities</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

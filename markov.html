@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Markov Chains &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Law of Large Numbers and Central Limit Theorem" href="largenum.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="discretep.html">
+     Discrete Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="condprob.html">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random.html">
+     Random Variables: Distribution and Expectation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random2.html">
+     Random Variables: Variance and Covariance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="distrib.html">
+     Distributions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="continuous.html">
+     Continuous Probabilities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conin.html">
+     Concentration Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="largenum.html">
+     Law of Large Numbers and Central Limit Theorem
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/markov.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-markov-chains">
+   Finite Markov Chains
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#balance-equations">
+   Balance Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time">
+   Time
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="markov-chains">
+<h1>Markov Chains<a class="headerlink" href="#markov-chains" title="Permalink to this headline">¶</a></h1>
+<p>Markov chains are models of random motion in a finite set, capturing a vast
+array of systems encountered in applications in a simple manner that can be
+described using elementary matrix algebra.</p>
+<p>An example is modeling a system of webpages, and the likelihood of a user
+visiting certain pages of the site. On average, how many steps might it take
+before a user visits a certain page.</p>
+<p><img alt="Figure 1" src="_images/markov-chain.png" /></p>
+<p>Above is an example of a simple Markov chain describing a random motion in the
+set <span class="math notranslate nohighlight">\(\{A, B\}\)</span>. The position at time <span class="math notranslate nohighlight">\(n=0, 1, 2, \cdots\)</span> is <span class="math notranslate nohighlight">\(X_n \in \{A, B\}\)</span>.
+We call <span class="math notranslate nohighlight">\(X_n\)</span> the state of the Markov chain at time <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(A=0, B=1\)</span>. The above figure can be described by the following set of
+equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather} Pr[X_{n+1}=0|X_n=0, X_{n-1}, \cdots, X_0]=0.6\\
+				 Pr[X_{n+1}=1|X_n=0, X_{n-1}, \cdots, X_0]=0.8\\
+				 Pr[X_{n+1}=0|X_n=1, X_{n-1}, \cdots, X_0]=0.4\\
+				 Pr[X_{n+1}=1|X_n=1, X_{n-1}, \cdots, X_0]=0.2\end{gather}\end{split}\]</div>
+<p>Figure 1 summarizes the rules above, which specify the <strong>transition
+probabilities</strong>. The Markov chain is <strong>amnesic</strong>: at step <span class="math notranslate nohighlight">\(n\)</span>, it forgets what
+it did before getting to the current state and its future steps only depend on
+that current state.</p>
+<p>We define the transition probability matrix <span class="math notranslate nohighlight">\(P\)</span> by <span class="math notranslate nohighlight">\(P(0,0)= 0.6, P(0,1)=0.4,
+P(1,0)=0.8, P(1,1)=0.2\)</span>. That is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} P = \begin{bmatrix}
+0.6 &amp; 0.4\\
+0.8 &amp; 0.2
+\end{bmatrix} \end{split}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(Pr[X_{n+1}=j|, X_n=i, X_{n-1}, \cdots, X_0] = P(i,j) \text{ for } n\geq
+0 \text{ and } i, j \in {0,1}\)</span>.</p>
+<div class="section" id="finite-markov-chains">
+<h2>Finite Markov Chains<a class="headerlink" href="#finite-markov-chains" title="Permalink to this headline">¶</a></h2>
+<p>One defines a general finite Markov chain as follows. The state space is
+<span class="math notranslate nohighlight">\(\mathscr{K} = \{1, 2, \cdots, K\}\)</span> for some finite <span class="math notranslate nohighlight">\(K\)</span>. The transition
+probabiility matrix <span class="math notranslate nohighlight">\(P\)</span> is a <span class="math notranslate nohighlight">\(K\times K\)</span> matrix such that:</p>
+<div class="math notranslate nohighlight">
+\[P(i,j)\geq 0,\forall i, j \in \mathscr{K}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=1}^KP(i,j)=1,\forall i\in\mathscr{K}\]</div>
+<p>The <em>initial distribution</em> is a vector <span class="math notranslate nohighlight">\(\pi_0=\{\pi_0(i), i\in\mathscr{K}\)</span> where
+<span class="math notranslate nohighlight">\(\pi_0(i)\geq 0,\forall i\in\mathscr{K}\)</span> and <span class="math notranslate nohighlight">\(\sum_{i\in\mathscr{K}}\pi_0(i)=1\)</span>.</p>
+<p>One defines the random sequence <span class="math notranslate nohighlight">\(\{X_n,n=0,1,2,\cdots\}\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Pr[X_0=1]=\pi_0(i),i\in\mathscr{K}\\
+Pr[X_{n+1}=j|X_n=1,X_{n-1},\cdots,X_0]=P(i,j),\forall n\geq0,\forall i,j\in
+\mathscr{K}\end{split}\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Pr[X_0=i_0,X_1=i_1,\cdots,X_n=i_n] = \\Pr[X_0=i_0]Pr[X_1=i_1|X_0=i_0]\cdots
+Pr[X_n=i_n|X_0=i_0,X_1=i_1,\cdots,X_{n-1}=i_{n-1}]\\=\pi_0(i_0)P(i_0,i_1)\cdots
+P(i_{n-1},i_n)\end{split}\]</div>
+<p>Consequently,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Pr[X_n=i_n]=\sum_{i_0,\cdots,i_{n-1}}Pr[X_0=i_0,X_1=i_1,\cdots,X_n=i_n]=\sum_
+{i_0,\cdots,i_{n-1}}\pi_0(i_0)P(i_0,I_1),\cdots,P(i_{n-1},i_n)\\
+=\pi_0P^n(i_n)\end{split}\]</div>
+<p>Where’s the last expression is component <span class="math notranslate nohighlight">\(i_n\)</span> of the product of the row vector
+<span class="math notranslate nohighlight">\(\pi_0\)</span> times the <span class="math notranslate nohighlight">\(n\)</span>-th power of the matrix <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>Thus, if we designate by <span class="math notranslate nohighlight">\(\pi_n\)</span> the distribution of <span class="math notranslate nohighlight">\(X_n\)</span>, so that <span class="math notranslate nohighlight">\(Pr[X_n=i]=
+\pi_n(i)\)</span>, then the last derivation proves the following result:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>One has</p>
+<div class="math notranslate nohighlight">
+\[\pi_n=\pi_0P^n,n\geq 0\]</div>
+<p>In particular, if <span class="math notranslate nohighlight">\(\pi_0(i)=1\)</span> for some <span class="math notranslate nohighlight">\(i\)</span>, then <span class="math notranslate nohighlight">\(\pi_n(j)=P^n(i,j)=Pr[X_n=j|
+X_0=i]\)</span>.</p>
+</div>
+</div>
+<div class="section" id="balance-equations">
+<h2>Balance Equations<a class="headerlink" href="#balance-equations" title="Permalink to this headline">¶</a></h2>
+<p>A distribution <span class="math notranslate nohighlight">\(\pi\)</span> is invariant for the transition probability matrix <span class="math notranslate nohighlight">\(P\)</span> if
+it satisfies the following balance equations:</p>
+<div class="math notranslate nohighlight">
+\[\pi=\pi P\]</div>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<div class="math notranslate nohighlight">
+\[\pi_n=\pi_0,\forall n\geq 0\]</div>
+<p>if and only if <span class="math notranslate nohighlight">\(\pi_0\)</span> is invariant.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>If <span class="math notranslate nohighlight">\(\pi_n=\pi_0\)</span> for all <span class="math notranslate nohighlight">\(n\geq 0\)</span>, then <span class="math notranslate nohighlight">\(\pi_0=\pi_1=\pi_0P\)</span>, so that <span class="math notranslate nohighlight">\(\pi_0\)</span>
+satisfies the definition of invariance.</p>
+<p>If <span class="math notranslate nohighlight">\(\pi_0P=\pi_0\)</span>, then <span class="math notranslate nohighlight">\(\pi_1=\pi_0P=\pi_0\)</span>. Also, if <span class="math notranslate nohighlight">\(\pi_n=\pi_0\)</span>, then <span class="math notranslate nohighlight">\(\pi_
+{n+1}=\pi_nP=\pi_0P=\pi_0\)</span>.</p>
+</div>
+</div>
+<div class="section" id="time">
+<h2>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h2>
+<p>A Markov chain is <strong>irreducible</strong> if it can go from every state <span class="math notranslate nohighlight">\(i\)</span> to every
+other state <span class="math notranslate nohighlight">\(j\)</span>, possibly in multiple steps. It is only irreducible if and only
+if its state transition diagram is a directed graph with a single connected
+component.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Consider a finite irreducible Markov chain with state space <span class="math notranslate nohighlight">\(\mathscr{K}\)</span> and
+transition probability matrix <span class="math notranslate nohighlight">\(P\)</span>. Then, for any initial distribution <span class="math notranslate nohighlight">\(\pi_0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[lim_{n\rightarrow\infty}\frac{1}{n}\sum^{n-1}_{m=0}1\{X_m=i\}=\pi(i),\forall
+i \in\mathscr{K}\]</div>
+<p>In the above equation, <span class="math notranslate nohighlight">\(\pi=\{\pi(i),i\in \mathscr{K}\)</span>} is an invariant
+distribution. Consequently, the invariant distributon exists and is unique.</p>
+</div>
+<p>It is not always the case that <span class="math notranslate nohighlight">\(Pr[X_n=i]\)</span> converges to some value as <span class="math notranslate nohighlight">\(n\)</span>
+increases. A simple example is our two state Markov chain, where <span class="math notranslate nohighlight">\(Pr[X_n=0]\)</span> is
+oscillating between 0 and 1; such a Markov chain is said to be <strong>periodic</strong>.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Consider an irreducible Markov chain on <span class="math notranslate nohighlight">\(\mathscr{K}\)</span> with transition
+probability matrix <span class="math notranslate nohighlight">\(P\)</span>. Define</p>
+<div class="math notranslate nohighlight">
+\[d(i):=gcd\{n&gt;0|P^n(i,i)=Pr[X_n=i|X_0=i]&gt;0\},i\in\mathscr{K}\]</div>
+<p><span class="math notranslate nohighlight">\(d(i)\)</span> has the same value for all <span class="math notranslate nohighlight">\(i \in\mathscr{K}\)</span>. If that value is 1, the
+Markov chain is said to be aperiodic. Otherwise, it is said to be periodic with
+period <span class="math notranslate nohighlight">\(d\)</span>. If it is aperiodic, then <span class="math notranslate nohighlight">\(Pr[X_n=i]\rightarrow\pi(i),\forall i\in
+\mathscr{K}\)</span>, as <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, where <span class="math notranslate nohighlight">\(\pi\)</span> is the unique invariant
+distribution.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="largenum.html" title="previous page">Law of Large Numbers and Central Limit Theorem</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
