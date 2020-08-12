@@ -11,3 +11,11 @@ just what you need to know.
 
 These notes will largely forego examples, images and overly detailed
 explanations in place of actual math.
+
+```{warning} 
+If you are **viewing on mobile**, equations are not optimized for mobile 
+viewing. To ensure the best possible experience, use the "download as PDF"
+functionality in the top-right corner of each page.
+```
+
+Check out my [page](winstonpurnomo.github.io/homepage)!
