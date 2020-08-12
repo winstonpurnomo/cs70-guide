@@ -15,7 +15,7 @@ of making the second choice, and for every way of making the second choice
 there are $m_3$ ways of making the third choice (and so on and so forth 
 until the $m^{th}_k$ choice), then the total number of distinct objects
 that can be made in this way is $m_1\times m_2 \times \cdots \times m_k=
-prod^k_{i=1}m_i$.
+\prod^k_{i=1}m_i$.
 
 So in the example above, after selecting the first element, there are
 $n−1$ ways to make the second choice, and $n−2$ ways to make the third, so
