@@ -1,0 +1,8 @@
+# Book settings
+title: CS70 Discrete Math and Probability Theory
+author: Winston Purnomo
+logo: 'logo.png'
+
+latex:
+  latex_documents:
+    targetname: book.tex

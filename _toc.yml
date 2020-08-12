@@ -1,0 +1,18 @@
+- file: intro
+- file: combinatorics
+  sections:
+    - file: definitions
+    - file: counting
+    - file: probproofs
+    - file: incexc
+- file: probability
+  sections:
+    - file: discretep
+    - file: condprob
+    - file: random
+    - file: random2
+    - file: distrib
+    - file: continuous
+    - file: conin
+    - file: largenum
+    - file: markov
