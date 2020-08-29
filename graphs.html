@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Graph Theory &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modular Arithmetic" href="modulo.html" />
+    <link rel="prev" title="Computability" href="computability.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/graphs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complete-graph">
+   Complete Graph
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trees">
+   Trees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypercubes">
+   Hypercubes
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="graph-theory">
+<h1>Graph Theory<a class="headerlink" href="#graph-theory" title="Permalink to this headline">¶</a></h1>
+<p>Formally, an <em>undirected</em> graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> is defined by a set of vertices <span class="math notranslate nohighlight">\(V\)</span>
+and a set of edges <span class="math notranslate nohighlight">\(E\)</span>. Each edge is a pair <span class="math notranslate nohighlight">\(\{u,v\}\)</span>. We represent the vertices
+of the graph as points, and the edges as line segments (or curves) connecting
+them. In graph <span class="math notranslate nohighlight">\(G_2\)</span>, the vertex set <span class="math notranslate nohighlight">\(V\)</span> is <span class="math notranslate nohighlight">\(\{1,2,3,4,5\}\)</span>, and the edge set
+<span class="math notranslate nohighlight">\(E = \{\{1,2\},\{2,3\},\{3,4\},\{4,5\},\{5,1\}\}\)</span>.</p>
+<p>More generally, we can also define a <em>directed</em> graph. A directed graph
+<span class="math notranslate nohighlight">\(G=(V,E)\)</span> again consists of a set of vertices <span class="math notranslate nohighlight">\(V\)</span> and a set of edges <span class="math notranslate nohighlight">\(E\)</span>, with
+the difference that now an edge is an <em>ordered</em> pair of vertices <span class="math notranslate nohighlight">\((u,v)\)</span>. In
+other words, <span class="math notranslate nohighlight">\(E\)</span> is a subset of the Cartesian product <span class="math notranslate nohighlight">\(V\times V\)</span>.</p>
+<p>Unlike the undirected case, the edge <span class="math notranslate nohighlight">\((u,v)\)</span> is not the same as edge <span class="math notranslate nohighlight">\((v,u)\)</span>.
+A directed graph is also represented as a set of points <span class="math notranslate nohighlight">\(V\)</span> and the edge <span class="math notranslate nohighlight">\((u,v)\)</span>
+is now shown as a directed line segment, or arrow, from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span>. In the below
+graph <span class="math notranslate nohighlight">\(G_1\)</span>, the vertex set is <span class="math notranslate nohighlight">\(V=\{1,2,3,4\}\)</span> and the edge set <span class="math notranslate nohighlight">\(E=\{(1,2),(1,3)
+,(1,4)\}\)</span>. Note that <span class="math notranslate nohighlight">\((1,2)\)</span> is an edge of <span class="math notranslate nohighlight">\(G_1\)</span>, but <span class="math notranslate nohighlight">\((2,1)\)</span> is not.</p>
+<p><img alt="Figure 1" src="_images/grph.png" /></p>
+<p>Directed graphs are more general than undirected ones as the latter are
+essentially directed graphs in which every edge <span class="math notranslate nohighlight">\((u,v)\)</span> is accompanied by its
+reverse <span class="math notranslate nohighlight">\((v,u)\)</span>.</p>
+<p>An edge <span class="math notranslate nohighlight">\(e\)</span> is <em>incident</em> on vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>, and that <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are
+<em>neighbors</em> or <em>adjacent</em>. If <span class="math notranslate nohighlight">\(G\)</span> is undirected, then the <em>degree</em> of vertex
+<span class="math notranslate nohighlight">\(u\in V\)</span> is the number of edges incident to <span class="math notranslate nohighlight">\(u\)</span>, i.e. <span class="math notranslate nohighlight">\(degree(u)=|\{v\in V:
+\{u,v,\}\in E\}|\)</span>. A vertex <span class="math notranslate nohighlight">\(u\)</span> whose degree is 0 is called an <em>isolated</em>
+vertex, since there is no edge which connects <span class="math notranslate nohighlight">\(u\)</span> to the rest of the graph.</p>
+<p>A directed graph has two different notions of degree due to the directions on
+the edges. Specifically, the <em>in-degree</em> of aa vertex <span class="math notranslate nohighlight">\(u\)</span> is the number of edges
+from other vertices to <span class="math notranslate nohighlight">\(u\)</span>, and the <em>out-degree</em> of <span class="math notranslate nohighlight">\(u\)</span> is the number of edges
+from <span class="math notranslate nohighlight">\(u\)</span> to other vertices.</p>
+<p>Finally, our definition of graph thus far allows <em>self-loops</em>, edges of the form
+<span class="math notranslate nohighlight">\(\{u,u\}\)</span> or <span class="math notranslate nohighlight">\((u,u)\)</span>. However, this usually gives us no interesting information,
+so we should assume our graphs have no self-loops unless otherwise specified.
+Edges that allow self-loops and multiple edges are often referred to as
+<em>multigraphs</em>.</p>
+<p>Letting <span class="math notranslate nohighlight">\(G=(V,E)\)</span> be an undirected graph. A <em>walk</em> in <span class="math notranslate nohighlight">\(G\)</span> is a sequence of
+edges <span class="math notranslate nohighlight">\((e_1,\cdots,e_{n-1})\)</span> for which there is a sequence of vertices <span class="math notranslate nohighlight">\((v_1,
+\cdots,v_n)\)</span> such that <span class="math notranslate nohighlight">\(e_i=\{v_i,v_{i+1}\}\)</span> for <span class="math notranslate nohighlight">\(i=1,2,\cdots,n-1\)</span>. A walk
+with no repeated edges that begins and ends at the same vertex is a <em>tour</em>.</p>
+<p>A walk with vertice sequence <span class="math notranslate nohighlight">\(v_1,\cdots,v_n\)</span> is a <em>path</em> if all vertices and
+edges are distinct. A <em>cycle</em> is a tour where the only repeated vertex is the
+start and end vertex.</p>
+<p>A graph is said to be <em>connected</em> if there is a path between any two distinct
+vertices. If there is any vertex that cannot be reached from any other vertex,
+the graph is <em>disconnected</em>.</p>
+<div class="section" id="complete-graph">
+<h2>Complete Graph<a class="headerlink" href="#complete-graph" title="Permalink to this headline">¶</a></h2>
+<p>The simplest class of graph is the <strong>complete</strong> graph. They contain the
+<em>maximum</em> possible number of edges (i.e. every pair of (distinct) vertices <span class="math notranslate nohighlight">\(u\)</span>
+and <span class="math notranslate nohighlight">\(v\)</span> is connected by an edge <span class="math notranslate nohighlight">\(\{u,v\}\)</span>. Complete graphs are denoted by the
+notation <span class="math notranslate nohighlight">\(K_n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> denotes the number of vertices.</p>
+<p><img alt="Figure 2" src="_images/kgrph.png" /></p>
+<p>Formally, we can write <span class="math notranslate nohighlight">\(K_n=(V,E)\)</span> for <span class="math notranslate nohighlight">\(|V|=n\)</span> and <span class="math notranslate nohighlight">\(E=\{\{v_i,v_j\}|v_i\not =
+v_j\text{ and }v_i, v_j\in V\}\)</span>.</p>
+<p>A complete graph is special in that each vertex is connected by an edge to every
+other vertex. Thus, such a graph is very “strongly connected” in that a large
+number of edges must be removed before we disconnect the graph into two
+components, which can be a desirable property in certain applications.</p>
+<p>Much less common is a complete <em>directed</em> graph, one in which for any pair of
+distinct vertices <span class="math notranslate nohighlight">\(u,v\)</span>, both edges <span class="math notranslate nohighlight">\((u,v)\)</span> and <span class="math notranslate nohighlight">\((v,u)\)</span> are present.</p>
+</div>
+<div class="section" id="trees">
+<h2>Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
+<p>If complete graphs are maximally connected, trees are the opposite: removing any
+edge disconnects the graph. The following are all equivalent and interchangeable
+definitions of a tree:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(G\)</span> is connected and contains no cycles.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> is connected and has <span class="math notranslate nohighlight">\(n-1\)</span> edges (where <span class="math notranslate nohighlight">\(n=|V|\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> is connected and the removal of any single edge disconnects <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> has no cycles, and the addition of any single edge creates a cycle.</p></li>
+</ol>
+<p>Many graph-theoretical problems are computationally intractable on arbitrary
+graphs, but easy to solve on trees. Another reason we use trees is that they
+model many types of natural relationships between objects.</p>
+</div>
+<div class="section" id="hypercubes">
+<h2>Hypercubes<a class="headerlink" href="#hypercubes" title="Permalink to this headline">¶</a></h2>
+<p>We have discussed how complete graphs are a class of well-connected graphs. But
+in many cases, an exponentially large number of edges is required, and we do not
+always need such strong connectivity. A more useful alternative is the
+<em>hypercube</em> in some cases.</p>
+<p>The vertex set of the <span class="math notranslate nohighlight">\(n\)</span>-dimensional hypercube <span class="math notranslate nohighlight">\(G=(V,E)\)</span> is given by
+<span class="math notranslate nohighlight">\(V=\{0,1\}\)</span>, where recall <span class="math notranslate nohighlight">\(\{0,1\}^n\)</span> denotes the set of all <span class="math notranslate nohighlight">\(n\)</span>-bit strings.
+In other words, each vertex is labelled by its unique <span class="math notranslate nohighlight">\(n\)</span>-bit string. The edge
+set <span class="math notranslate nohighlight">\(E\)</span> is defined as follows: two vertices <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are connected if and
+only if <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> differ in exactly one-bit position, e.g. <span class="math notranslate nohighlight">\(1100\)</span> and <span class="math notranslate nohighlight">\(1000\)</span>.</p>
+<p><img alt="Figure 3" src="_images/hgrph.png" /></p>
+<p>An alternative, recursive definition begins by defining the <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>-subcube
+as the <span class="math notranslate nohighlight">\((n-1)\)</span>-dimensional hypercube with vertices labeled by <span class="math notranslate nohighlight">\(0x\)</span> for <span class="math notranslate nohighlight">\(x\in\{
+0,1\}^{n-1}\)</span> (and respectively, 1x). Then the <span class="math notranslate nohighlight">\(n\)</span>-dimensional hypercube is
+obtained by placing an edge between each pair of vertices <span class="math notranslate nohighlight">\(0x\)</span> and <span class="math notranslate nohighlight">\(1x\)</span> in the 0
+and 1-subcube respectively.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="computability.html" title="previous page">Computability</a>
+    <a class='right-next' id="next-link" href="modulo.html" title="next page">Modular Arithmetic</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

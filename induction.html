@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Law of Large Numbers and Central Limit Theorem &#8212; CS70 Discrete Math and Probability Theory</title>
+    <title>Induction &#8212; CS70 Discrete Math and Probability Theory</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -39,8 +39,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markov Chains" href="markov.html" />
-    <link rel="prev" title="Concentration Inequalities" href="conin.html" />
+    <link rel="next" title="Sets" href="sets.html" />
+    <link rel="prev" title="Proofs" href="proofs.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -81,10 +81,22 @@
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="logic.html">
    Logic
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="proofs.html">
+     Proofs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Induction
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="sets.html">
@@ -111,57 +123,10 @@
    Combinatorics
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1">
   <a class="reference internal" href="probability.html">
    Probability
   </a>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="discretep.html">
-     Discrete Probability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="condprob.html">
-     Conditional Probability
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random.html">
-     Random Variables: Distribution and Expectation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random2.html">
-     Random Variables: Variance and Covariance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="distrib.html">
-     Distributions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="continuous.html">
-     Continuous Probabilities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="conin.html">
-     Concentration Inequalities
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Law of Large Numbers and Central Limit Theorem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="markov.html">
-     Markov Chains
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -205,7 +170,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/largenum.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/induction.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -234,13 +199,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#law-of-large-numbers">
-   Law of Large Numbers
+  <a class="reference internal nav-link" href="#strengthening-the-inductive-hypothesis">
+   Strengthening the Inductive Hypothesis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#central-limit-theorem">
-   Central Limit Theorem
+  <a class="reference internal nav-link" href="#strong-induction">
+   Strong Induction
   </a>
  </li>
 </ul>
@@ -253,68 +218,90 @@
         
               <div>
                 
-  <div class="section" id="law-of-large-numbers-and-central-limit-theorem">
-<h1>Law of Large Numbers and Central Limit Theorem<a class="headerlink" href="#law-of-large-numbers-and-central-limit-theorem" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="law-of-large-numbers">
-<h2>Law of Large Numbers<a class="headerlink" href="#law-of-large-numbers" title="Permalink to this headline">¶</a></h2>
-<p>The estimation we use in previous chapters is a principle we widely accept: the
-Law of Large Numbers (LLN), which states that if we observe a random variable
-many times, and take the average of these observations, the average will
-converge on a single value, the expectation of the random variable. In other
-words, averaging tends to smooth out large fluctuations, and the more averaging
-we do the better the smoothing.</p>
-<p>In more mathematical terms,</p>
-<p>Let <span class="math notranslate nohighlight">\(X_1, X_2, \cdots\)</span> be a sequence of independent and identically distributed
-random variables with common finite expectation <span class="math notranslate nohighlight">\(\mathbb{E}[X_i]=\mu,\forall i\)</span>.
-Their partial sums <span class="math notranslate nohighlight">\(S_n=X_1+X_2+\cdots+X_n\)</span> satisfy</p>
-<div class="math notranslate nohighlight">
-\[\mathbb{P}[|\frac{1}{n}S_n-\mu|&lt;\epsilon]\rightarrow1, \text{ as } n
-\rightarrow\infty\]</div>
-<p>for every <span class="math notranslate nohighlight">\(\epsilon&gt;0\)</span>, however small.</p>
-<div class="admonition-proof admonition">
-<p class="admonition-title">Proof</p>
-<p>Let <span class="math notranslate nohighlight">\(Var(X_i)=\sigma^2\)</span> be the common variance of therandom variables, assuming
-<span class="math notranslate nohighlight">\(\sigma^2\)</span> is finite (a proof that does not assume this is much more
-complicated). The LLN is an immediate consequence of Chebyshev’s Inequality;
-since <span class="math notranslate nohighlight">\(X_1, X_2, \cdots\)</span> are i.i.d. random variables with <span class="math notranslate nohighlight">\(\mathbb{E}[X_i]=\mu\)</span>
-and <span class="math notranslate nohighlight">\(Var(X_i)=\sigma^2\)</span>, we have <span class="math notranslate nohighlight">\(\mathbb{E}[\frac{1}{n}S_n]=\mu\)</span> and <span class="math notranslate nohighlight">\(Var(\frac
-{1}{n}S_n)=\frac{\sigma^2}{n}\)</span>. So by Chebyshev’s Inequality, we have</p>
-<div class="math notranslate nohighlight">
-\[\mathbb{P}[|\frac{1}{n}S_n-\mu|\geq\epsilon]\leq\frac{Var(\frac{1}{n}S_n)}{
-\epsilon^2}=\frac{\sigma^2}{n\epsilon^2}\rightarrow 0, \text{ as } n\rightarrow
-\infty\]</div>
-<p>Hence, <span class="math notranslate nohighlight">\(\mathbb{P}[|\frac{1}{n}S_n-\mu|&lt;\epsilon] = 1-
-\mathbb{P}[|\frac{1}{n}S_n-\mu|\geq\epsilon]\rightarrow 1, \text{ as } n
-\rightarrow\infty\)</span>.</p>
-</div>
-<p>Notice the LLN says the probability of <em>any</em> deviation <span class="math notranslate nohighlight">\(\epsilon\)</span> from the mean,
-however small, tends to zero as the number of observations <span class="math notranslate nohighlight">\(n\)</span> in our average
-tends to infinity. By making <span class="math notranslate nohighlight">\(n\)</span> large enough, we can make the probability of
-any given deviation as small as we like.</p>
-</div>
-<div class="section" id="central-limit-theorem">
-<h2>Central Limit Theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
-<p>Recall the Law of Large Numbers from earlier: we can actuall strengthen it even
-further, deriving from the density of the normal distribution.</p>
+  <div class="section" id="induction">
+<h1>Induction<a class="headerlink" href="#induction" title="Permalink to this headline">¶</a></h1>
+<p>Mathematical nduction is an additional method of proofing that we will cover in
+further detail. Induction is a tool that can be used to establish the truth of a
+statement over all natural numbers.</p>
+<ul class="simple">
+<li><p>Goal: To prove <span class="math notranslate nohighlight">\(P\)</span> for all values of <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Approach:</p>
+<ol class="simple">
+<li><p>Prove <span class="math notranslate nohighlight">\(P\)</span> is true for a base case (usually <span class="math notranslate nohighlight">\(n=0\)</span> or $n=1).</p></li>
+<li><p>Assume <span class="math notranslate nohighlight">\(P\)</span> is true for some arbitrary <span class="math notranslate nohighlight">\(n=k\)</span>.</p></li>
+<li><p>Show <span class="math notranslate nohighlight">\(P\)</span> is true for <span class="math notranslate nohighlight">\(n=k+1\)</span>, assuming <span class="math notranslate nohighlight">\(P\)</span> holds for <span class="math notranslate nohighlight">\(n=k\)</span>.</p></li>
+</ol>
+</li>
+</ul>
 <div class="admonition-theorem admonition">
 <p class="admonition-title">Theorem</p>
-<p>Let <span class="math notranslate nohighlight">\(X_1,X_2,\dots\)</span> be a sequence of i.i.d. random variables with common finite
-expectation <span class="math notranslate nohighlight">\(\mathbb{E}[X_i]=\mu\)</span> and finite variance <span class="math notranslate nohighlight">\(Var(X_i)=\sigma^2\)</span>. Let
-<span class="math notranslate nohighlight">\(S_n=\sum_{i=1}^n X_i\)</span>. Then, the distribution of <span class="math notranslate nohighlight">\(\frac{S_n-n\mu}{\sigma
-\sqrt{n}}\)</span> converges to <span class="math notranslate nohighlight">\(N(0,1)\)</span> as <span class="math notranslate nohighlight">\(n\rightarrow \infty\)</span>. In other words, for
-constant <span class="math notranslate nohighlight">\(c\in \mathbb{R}\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[\mathbb{P}[\frac{S_n-n\mu}{\sigma\sqrt{n}}\leq c]\rightarrow\frac{1}{\sqrt{2
-\pi}}\int^c_{-\infty}e^{-\frac{x^2}{2}}dx\text{ as }n\rightarrow\infty\]</div>
+\[\forall n\in\mathbb{N}, \sum_{i=0}^ni=\frac{n(n+1)}{2}\]</div>
 </div>
-<p>The Central Limit Theorem essentially states that if we take an average of <span class="math notranslate nohighlight">\(n\)</span>
-observations of any arbitrary random variable <span class="math notranslate nohighlight">\(X\)</span>, then the distribution of that
-average will be a bell-shaped curve centered at <span class="math notranslate nohighlight">\(\mu=\mathbb{E}[X]\)</span>. Thus, all
-trace of the distribution of <span class="math notranslate nohighlight">\(X\)</span> disappears as <span class="math notranslate nohighlight">\(n\)</span> gets large, no matter how
-complex the distribution, making it look like the normal distribution when
-averaged. The only effect of the original distribution is through the variance
-<span class="math notranslate nohighlight">\(\sigma^2\)</span>, which determines the width of the curve for a given value of <span class="math notranslate nohighlight">\(n\)</span>n,
-and hence the rate at which the curve shrinks to a spike.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em> (<span class="math notranslate nohighlight">\(n=0\)</span>): <span class="math notranslate nohighlight">\(\sum_{i=0}^0i=0=\frac{0(0+1)}{2}\)</span>. The base case holds.</p>
+<p><em>Induction Hypothesis</em>: For an arbitrary <span class="math notranslate nohighlight">\(n=k\geq 0\)</span>, assume that <span class="math notranslate nohighlight">\(\sum_{i=0}^k
+i=\frac{k(k+1)}{2}\)</span>.</p>
+<p><em>Inductive Step</em>:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=0}^{k+1}i=\sum_{i=0}^{k}i+(k+1)=\frac{k(k+1)}{2}+(k+1)=\frac{k(k+1)+
+2(k+1)}{2}=\frac{(k+1)(k+2)}{2}\]</div>
+<p>where the second equality follows from the Induction Hypothesis. By the
+principle of mathematical induction, the claim follows.</p>
+</div>
+<div class="section" id="strengthening-the-inductive-hypothesis">
+<h2>Strengthening the Inductive Hypothesis<a class="headerlink" href="#strengthening-the-inductive-hypothesis" title="Permalink to this headline">¶</a></h2>
+<p>When using induction, it is possible to choose a statement that is too broad or
+general to prove. For example, suppose we were proving the following statement:
+<em>for all <span class="math notranslate nohighlight">\(n\geq 1\)</span>, the sum of the first <span class="math notranslate nohighlight">\(n\)</span> odd numbers is a perfect square.</em></p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=1\)</span>): This holds.</p>
+<p><em>Induction Hypothesis</em>: Assume the sum of the first <span class="math notranslate nohighlight">\(k\)</span> odd numbers is a perfect
+square, say <span class="math notranslate nohighlight">\(m^2\)</span>.</p>
+<p><em>Inductive Step</em>: The <span class="math notranslate nohighlight">\((k+1)^{st}\)</span> odd number is <span class="math notranslate nohighlight">\(2k+1\)</span>. By the I.H., the sum
+of the first <span class="math notranslate nohighlight">\(k+1\)</span> odd numbers is <span class="math notranslate nohighlight">\(m^2+2k+1\)</span>, which doesn’t prove anything.</p>
+</div>
+<p>Now, if we strengthened the inductive hypothesis to:
+<em>for all <span class="math notranslate nohighlight">\(n\geq 1\)</span>, the sum of the first <span class="math notranslate nohighlight">\(n\)</span> odd numbers is <span class="math notranslate nohighlight">\(n^2\)</span>.</em></p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=1\)</span>): This holds.</p>
+<p><em>Induction Hypothesis</em>: Assume the sum of the first <span class="math notranslate nohighlight">\(k\)</span> odd numbers is a perfect
+square <span class="math notranslate nohighlight">\(k^2\)</span>.</p>
+<p><em>Inductive Step</em>: The <span class="math notranslate nohighlight">\((k+1)^{st}\)</span> odd number is <span class="math notranslate nohighlight">\(2k+1\)</span>. By the I.H., the sum
+of the first <span class="math notranslate nohighlight">\(k+1\)</span> odd numbers is <span class="math notranslate nohighlight">\(k^2+2k+1=(k+1)^2\)</span>. Thus, bu the principle of
+induction, the theorem holds.</p>
+</div>
+</div>
+<div class="section" id="strong-induction">
+<h2>Strong Induction<a class="headerlink" href="#strong-induction" title="Permalink to this headline">¶</a></h2>
+<p>What we have done so far is a notion of induction known as <em>simple</em> or <em>weak</em>
+induction. We will now use a different notion called <em>strong</em> induction, where
+we modify the induction hypothesis: instead of assuming just <span class="math notranslate nohighlight">\(P(k)\)</span> is true, we
+assume the stronger statement that <span class="math notranslate nohighlight">\(P(i\leq k), \forall i \in\mathbb{N}\)</span> is
+true.</p>
+<p>There is no difference in the power of strong and weak induction: there are no
+statements you can only prove with strong induction and not weak induction. But
+strong induction can make proofs easier and more concise.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Every natural number <span class="math notranslate nohighlight">\(n&gt;1\)</span> can be written as a product of one or more primes.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=2\)</span>): Clearly, <span class="math notranslate nohighlight">\(P(2)\)</span> holds since 2 is a prime.</p>
+<p><em>Induction Hypothesis</em>: Assume <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all <span class="math notranslate nohighlight">\(2\leq n\leq k\)</span>.</p>
+<p><em>Inductive Step</em>: We have two cases, either <span class="math notranslate nohighlight">\(k+1\)</span> is a prime number, or it is
+not.</p>
+<p>In the first case, if <span class="math notranslate nohighlight">\(k+1\)</span> is a prime number, then we are done as it is the
+product of one prime, itself.</p>
+<p>In the second case, if <span class="math notranslate nohighlight">\(k+1\)</span> is not a prime, then by definition, <span class="math notranslate nohighlight">\(k+1=xy\)</span> for
+some <span class="math notranslate nohighlight">\(x, y\in\mathbb{Z}^+\)</span> satisfying <span class="math notranslate nohighlight">\(1&lt;x,y&lt;k+1\)</span>. By the I.H., <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can
+each be written as the product of primes (since <span class="math notranslate nohighlight">\(x,y\leq n\)</span>). This therefore
+implies <span class="math notranslate nohighlight">\(k+1\)</span> can also be written as a product of primes.</p>
+</div>
 </div>
 </div>
 
@@ -346,8 +333,8 @@ and hence the rate at which the curve shrinks to a spike.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="conin.html" title="previous page">Concentration Inequalities</a>
-    <a class='right-next' id="next-link" href="markov.html" title="next page">Markov Chains</a>
+    <a class='left-prev' id="prev-link" href="proofs.html" title="previous page">Proofs</a>
+    <a class='right-next' id="next-link" href="sets.html" title="next page">Sets</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

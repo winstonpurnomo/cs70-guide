@@ -82,6 +82,31 @@
 </ul>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="combinatorics.html">
    Combinatorics
   </a>
@@ -274,7 +299,7 @@ the desired result.</p>
 <p>We can define a slicker proof using the indicator function <span class="math notranslate nohighlight">\(I\{\bullet\}\)</span>,
 defined as:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}I{statement}=\begin{cases}1,&amp;\text{if statement is true}\\0,&amp;\text{if
+\[\begin{split}I\{statement\}=\begin{cases}1,&amp;\text{if statement is true}\\0,&amp;\text{if
 statement is false}\end{cases}\end{split}\]</div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
@@ -296,7 +321,7 @@ from the fact that <span class="math notranslate nohighlight">\(I\{X\geq c\}\)</
 <p>Let <span class="math notranslate nohighlight">\(Y\)</span> be an arbitrary random variable with finite mean. For any positive
 constants <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(r\)</span>,</p>
 <div class="math notranslate nohighlight">
-\[\mathbb{P}[|Y|\geq c]\leq\frac{\mathbb{E}[|Y|7r]}{c^r}\]</div>
+\[\mathbb{P}[|Y|\geq c]\leq\frac{\mathbb{E}[|Y|^r]}{c^r}\]</div>
 <div class="admonition-proof admonition">
 <p class="admonition-title">Proof</p>
 <p>For <span class="math notranslate nohighlight">\(c&gt;0\)</span> and <span class="math notranslate nohighlight">\(r&gt;0\)</span> (if <span class="math notranslate nohighlight">\(r\)</span> were negative, the last inequality below does not
@@ -312,7 +337,7 @@ hold), we have,</p>
 </div>
 <div class="section" id="chebyshev-s-inequality">
 <h2>Chebyshev’s Inequality<a class="headerlink" href="#chebyshev-s-inequality" title="Permalink to this headline">¶</a></h2>
-<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span> with a finite expectation<span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span>,</p>
+<p>For a random variable <span class="math notranslate nohighlight">\(X\)</span> with a finite expectation <span class="math notranslate nohighlight">\(\mathbb{E}[X]=\mu\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{P}[|X-\mu|\geq c]\leq \frac{Var(X)}{c^2}\]</div>
 <div class="admonition-proof admonition">
@@ -333,7 +358,7 @@ nonnegative, applying Markov’s inequality yields</p>
 {E}[(X-\mu)^2]=Var(X)\)</span>. Hence,</p>
 <div class="math notranslate nohighlight">
 \[|X-\mu|\geq c\implies Y=(X-\mu)^2\geq c^2\]</div>
-<p>follows from apllying Generalized Markov’s Inequality to <span class="math notranslate nohighlight">\(Y=X-\mu\)</span> with <span class="math notranslate nohighlight">\(r=2\)</span>.</p>
+<p>follows from applying Generalized Markov’s Inequality to <span class="math notranslate nohighlight">\(Y=X-\mu\)</span> with <span class="math notranslate nohighlight">\(r=2\)</span>.</p>
 </div>
 <p>Stopping to consider what Chebyshev’s Inequality means, it tells us that the
 probability of any given deviation, <span class="math notranslate nohighlight">\(c\)</span>, from the mean is at most <span class="math notranslate nohighlight">\(\frac{Var(X)}

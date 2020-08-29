@@ -21,7 +21,7 @@ $$\mathbb{P}[|\frac{1}{n}S_n-\mu|<\epsilon]\rightarrow1, \text{ as } n
 for every $\epsilon>0$, however small.
 
 ```{admonition} Proof
-Let $Var(X_i)$=\sigma^2$ be the common variance of therandom variables, assuming
+Let $Var(X_i)=\sigma^2$ be the common variance of therandom variables, assuming
 $\sigma^2$ is finite (a proof that does not assume this is much more 
 complicated). The LLN is an immediate consequence of Chebyshev's Inequality;
 since $X_1, X_2, \cdots$ are i.i.d. random variables with $\mathbb{E}[X_i]=\mu$

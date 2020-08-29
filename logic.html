@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Logic &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Proofs" href="proofs.html" />
+    <link rel="prev" title="Welcome to CS70" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Logic
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="proofs.html">
+     Proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Induction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/logic.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantifiers">
+   Quantifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#negation">
+   Negation
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="logic">
+<h1>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h1>
+<p>Propositional logic is the framework upon which discrete mathematics is built.</p>
+<p>A <strong>proposition</strong> is a statement which is either true or false. The following
+are all propositions:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(1+1=3\)</span>.</p></li>
+<li><p>You are currently taking CS70.</p></li>
+</ol>
+<p>The following are not:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(2+2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x=6\)</span>. (What is <span class="math notranslate nohighlight">\(x\)</span>?)</p></li>
+</ol>
+<p>And the following are not either, as they are fuzzy.</p>
+<ol class="simple">
+<li><p>Tom Brady often plays football. (What is “often”?)</p></li>
+<li><p>CS70 is a difficult class. (What is “difficult”?)</p></li>
+</ol>
+<p>Propositions can be combined to form more complex statements. Let <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> be
+variables representing propositions. We can join them using the following
+connectives:</p>
+<ol class="simple">
+<li><p>Conjunction: <span class="math notranslate nohighlight">\(P\wedge Q\)</span>(“P and Q”). True only when both <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are
+true.</p></li>
+<li><p>Disjunction: <span class="math notranslate nohighlight">\(P\vee Q\)</span>(“P or Q”). True when either <span class="math notranslate nohighlight">\(P\)</span> or <span class="math notranslate nohighlight">\(Q\)</span> is true.</p></li>
+<li><p>Negation: <span class="math notranslate nohighlight">\(\neg P\)</span> (“not P”). True when <span class="math notranslate nohighlight">\(P\)</span> is false.</p></li>
+</ol>
+<p>Statements like these and their variables are called <strong>propositional forms</strong>.</p>
+<p>The <em>Law of the Excluded Middle</em> states that for any proposition <span class="math notranslate nohighlight">\(P\)</span>, either it
+is true or <span class="math notranslate nohighlight">\(\neg P\)</span> is true, but not both. Thus, <span class="math notranslate nohighlight">\(P\vee\neg P\)</span> is always true.</p>
+<p>A propositional form that is always true regardless of the truth values of its
+variables is a <strong>tautology</strong>. Conversely, a statement which is always false
+(e.g. <span class="math notranslate nohighlight">\(P\wedge\neg P\)</span>) is a <strong>contradiction</strong>.</p>
+<p>We can describe the possible values of a propositional form using a truth table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\wedge Q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\neg P\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+</tbody>
+</table>
+<p>Another kind of propositional form is an <strong>implication</strong>: <span class="math notranslate nohighlight">\(P\implies Q\)</span>. This
+means “if P, then Q”. <span class="math notranslate nohighlight">\(P\)</span> is the hypothesis of the implication, and <span class="math notranslate nohighlight">\(Q\)</span> is the
+conclusion. For example,</p>
+<p>“If you took CS70, you learned about propositional forms”</p>
+<p>An implication <span class="math notranslate nohighlight">\(P\implies Q\)</span> is only false when <span class="math notranslate nohighlight">\(P\)</span> is true and <span class="math notranslate nohighlight">\(Q\)</span> is false.
+The above statement is only false if you did not learn about propositional forms
+when you took CS70.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\implies Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\neg P\vee Q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note <span class="math notranslate nohighlight">\(P\implies Q\)</span> is always true when <span class="math notranslate nohighlight">\(P\)</span> is false, which means there are many
+mathematically sound statements that are nonsense in English. For example,</p>
+<p>“If 2+2=5, then pizza is made from grass”.</p>
+<p>When an implication is stupidly true because the hypothesis is false, then we
+say it is <em>vacuously true</em>.</p>
+<p><span class="math notranslate nohighlight">\(P\implies Q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\neg P\vee Q\)</span>, as can be seen by
+comparing their columns in the truth table. We write this as <span class="math notranslate nohighlight">\((P\implies Q)
+\equiv(\neg P\vee Q)\)</span>.</p>
+<p>There are other ways to state this:</p>
+<ol class="simple">
+<li><p>if P, then Q</p></li>
+<li><p>Q if P</p></li>
+<li><p>P only if Q</p></li>
+<li><p>P is sufficient for Q</p></li>
+<li><p>Q is necessary for P</p></li>
+<li><p>Q unless not P</p></li>
+</ol>
+<p>If both <span class="math notranslate nohighlight">\(P\implies Q\)</span> and <span class="math notranslate nohighlight">\(Q \implies P\)</span> are true, then we say “P if and only if
+Q” (shortened as “P iff Q”). Logically it is written as <span class="math notranslate nohighlight">\(P\iff Q\)</span>. <span class="math notranslate nohighlight">\(P\iff Q\)</span> is
+only true if <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> have the same truth values.</p>
+<p>Given an implication <span class="math notranslate nohighlight">\(P\implies Q\)</span>, we can also define its</p>
+<ol class="simple">
+<li><p><strong>Contrapositive</strong>: <span class="math notranslate nohighlight">\(\neg Q\implies \neg P\)</span></p></li>
+<li><p><strong>Converse</strong>: <span class="math notranslate nohighlight">\(Q\implies P\)</span></p></li>
+</ol>
+<p>And here are the truth tables:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P\implies Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q \implies P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\neg Q\implies\neg P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(P \iff Q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>F</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>F</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+<td class="text-align:center"><p>T</p></td>
+</tr>
+</tbody>
+</table>
+<p>Notice that <span class="math notranslate nohighlight">\(P\implies Q\)</span> and its contrapositive are <em>logically equivalent</em>.</p>
+<div class="math notranslate nohighlight">
+\[(P\implies Q)\equiv(\neg Q\implies\neg P)\]</div>
+<div class="section" id="quantifiers">
+<h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Permalink to this headline">¶</a></h2>
+<p>The mathematical statements in CS70 are a little more complicated than those
+from earlier, such as “If <span class="math notranslate nohighlight">\(n\)</span> is an odd integer, so is <span class="math notranslate nohighlight">\(n^3\)</span>.</p>
+<p>The reason the above is a statement, while <span class="math notranslate nohighlight">\(x=6\)</span> from earlier is not? In the
+example, there is an underlying “universe” that we are working in, and the
+statements are <em>quantified</em> over that universe. There are two basic quantifiers:
+the <em>universal quantifier</em> <span class="math notranslate nohighlight">\(\forall\)</span> (“for all”), and the <em>existential
+quantifier</em> <span class="math notranslate nohighlight">\(\exists\)</span> (“there exists”).</p>
+<p>Examples.</p>
+<ol class="simple">
+<li><p>For all natural numbers <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(n^2+n+41\)</span> is prime: <span class="math notranslate nohighlight">\(\mathbb{N}:(\forall n\in
+\mathbb{N})(n^2+n+41 \text{ is prime.})\)</span></p></li>
+<li><p>There is an integer <span class="math notranslate nohighlight">\(k\)</span> that is both even and odd: <span class="math notranslate nohighlight">\(\mathbb{Z}: (\exists k\in
+\mathbb{Z})(z \text{ is both even and odd.})\)</span></p></li>
+</ol>
+<p>Quantifiers are not commutative.</p>
+<div class="math notranslate nohighlight">
+\[(\forall x\in\mathbb{Z})(\exists x\in\mathbb{Z}(x&lt;y)\not\equiv(\exists y\in
+\mathbb{Z})(\forall x\in\mathbb{Z})(x&lt;y)\]</div>
+<p>The first statement says that given an integer, there is a larger one. The
+second says that there exists a largest integer. The former is true, the latter
+is not.</p>
+</div>
+<div class="section" id="negation">
+<h2>Negation<a class="headerlink" href="#negation" title="Permalink to this headline">¶</a></h2>
+<p>De Morgan’s Laws specify how negation applies to conjunctions and disjunctions:</p>
+<div class="math notranslate nohighlight">
+\[\neg(P\wedge Q)\equiv(\neg P\vee\neg Q)\]</div>
+<div class="math notranslate nohighlight">
+\[\neg(P\vee Q)\equiv(\neg P\wedge\neg Q)\]</div>
+<p>Negating quantifiers also follows analogous laws:</p>
+<div class="math notranslate nohighlight">
+\[\neg(\forall xP(x))\equiv \exists x\neg P(x)\]</div>
+<div class="math notranslate nohighlight">
+\[\neg(\exists xP(x))\equiv \forall x\neg P(x)\]</div>
+<p>It may be helpful to consider what De Morgan’s Laws do to English statements to
+convince yourself that these rules are in fact, true.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to CS70</a>
+    <a class='right-next' id="next-link" href="proofs.html" title="next page">Proofs</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

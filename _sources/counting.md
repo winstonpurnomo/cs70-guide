@@ -1,10 +1,12 @@
 # Counting
 
 ## Counting with Replacement
-Before we get into probabilities, let us first learn how to count the number of outcomes. In this section, we will consider counting in scenarios where we cannot choose two of the same object/event.
+Before we get into probabilities, let us first learn how to count the number of
+outcomes. In this section, we will consider counting in scenarios where we
+cannot choose two of the same object/event.
 
 ### First Rule of Counting
-First, consider the scenario with the set $S_1={1,2,⋯,n}$, where we would 
+First, consider the scenario with the set $S_1=\{1,2,\cdots,n\}$, where we would 
 like to choose k elements, where k is an integer less than n. How many ways
 are there to do this?
 
@@ -32,7 +34,7 @@ an m-to-one function f from the set of ordered objects to the set of
 unordered objects, we can count the number of ordered objects by pretending
 the order matters, then divide by $m$ (the number of ordered objects per
 unordered objects) to obtain the number of unordered objects, $|B|$. In 
-other words, $|B|=\frac{|A|}{m}.
+other words, $|B|=\frac{|A|}{m}$.
 
 For example, in a friend group of 10 people, how many ways are there to
 pick 4 people to be on your team? We can first count how many different 

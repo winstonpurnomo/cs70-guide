@@ -35,7 +35,7 @@ $$\binom{n}{k}=\binom{n-1}{k}+\binom{n-2}{k}+\cdots+\binom{k}{k}$$
 We can verify this proof by considering what it means to choose $k+1$
 elements from a set $S={1,2,\cdots, n}$.
 
-Imagine we pick the lowest-numbered eleemnt of $X$. If we picked 1, to finish
+Imagine we pick the lowest-numbered element of $X$. If we picked 1, to finish
 constructing $S$, we would then have to choose $k$ elements from the remaining
 $n-1$ elements, which is expressed by $\binom{n-1}{k}$. In another scenario,
 we select the lowest numbered element as 2, and the ways we can select the
@@ -71,10 +71,12 @@ When $n=4$, derangements are $\{2,1,4,3\},$ $\{2,4,1,3\},$ $\{4,1,2,3\},$
 $\{4,3,2,1\},$ $\{3,4,2,1\},$ $\{2,3,4,1\},$ $\{3,4,1,2\},$ $\{4,3,1,2\},$
 $\{3,1,4,2\}$.
 
-**Theorem**: For an arbitrary positive integer $n\geq3$, the number of
+```{admonition} Theorem
+For an arbitrary positive integer $n\geq3$, the number of
 derangements of $\{1,2,\cdots,n\}$ $D_n$ satisfies
 
 $$D_n=(n-1)(D_{n-1}+D_{n-2})$$.
+```
 
 ```{admonition} Proof
 In a derangement $(\pi_1, \cdots, \pi_n)$, suppose $\pi_n=j\in

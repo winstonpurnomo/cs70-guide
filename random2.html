@@ -82,6 +82,31 @@
 </ul>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="combinatorics.html">
    Combinatorics
   </a>
@@ -269,15 +294,16 @@ will square root it in the end.</p>
 <p class="admonition-title">Proof</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{E}[S_n^2]=\mathbb{E}[(X_1+X_2+\cdots+X_n)^2]=\mathbb{E}[\sum_{i=1}^n
-X_i^2+2\sum_{i&lt;j}X_iX_j]+\sum_{i=1}^n\mathbb{E}[X_i^2]+2\sum_[i&lt;j]\mathbb{E}[X_i
+X_i^2+2\sum_{i&lt;j}X_iX_j]+\sum_{i=1}^n\mathbb{E}[X_i^2]+2\sum_{i&lt;j}\mathbb{E}[X_i
 X_j]\]</div>
 <p>To proceed, we must compute <span class="math notranslate nohighlight">\(\mathbb{E}[X_i^2]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]\)</span> for <span class="math notranslate nohighlight">\(i
 \not=j\)</span>. Since <span class="math notranslate nohighlight">\(X_i\)</span> can only take values <span class="math notranslate nohighlight">\(\pm 1\)</span>, <span class="math notranslate nohighlight">\(\mathbb{E}[X_i^2]=1\)</span>. As for
 <span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]\)</span>, note <span class="math notranslate nohighlight">\(X_iX_j =+1\)</span> when <span class="math notranslate nohighlight">\(X_i=X_j=+1\)</span> or <span class="math notranslate nohighlight">\(X_i=X_j=-1\)</span>, and
 otherwise <span class="math notranslate nohighlight">\(X_iX_j=-1\)</span>. Thus,</p>
-<p><span class="math notranslate nohighlight">\(\mathbb{P}[X_iX_j=1]=\mathbb{P}[(X_i=X_j=+1)\vee(X_i=X_j=-1)]=\mathbb{P}[X_i=
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbb{P}[X_iX_j=1]=\mathbb{P}[(X_i=X_j=+1)\vee(X_i=X_j=-1)]=\mathbb{P}[X_i=
 X_j=+1]+\mathbb{P}[X_i=X_j=-1]\\=\mathbb{P}[X_i=+1]\times\mathbb{P}[X_j=+1]+
-\mathbb{P}[X_i=-1]\times\mathbb{P}[X_j=-1]=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}\)</span>$</p>
+\mathbb{P}[X_i=-1]\times\mathbb{P}[X_j=-1]=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}\end{split}\]</div>
 <p>where the second equality follows from the fact that the events are mutually
 exclusive, while the third equality follows from the independence of the events.
 In a similar vein, <span class="math notranslate nohighlight">\(\mathbb{P}[X_iX_j]=\frac{1}{2}\)</span>, hence, <span class="math notranslate nohighlight">\(\mathbb{E}[X_iX_j]=
@@ -288,11 +314,11 @@ In a similar vein, <span class="math notranslate nohighlight">\(\mathbb{P}[X_iX_
 that <span class="math notranslate nohighlight">\(\mathbb{E}[|S_n|]=\sqrt{\mathbb{E}[S_n^2]}=\sqrt{n}\)</span>.</p>
 <p>For more general random variables <span class="math notranslate nohighlight">\(X\)</span> with expectation <span class="math notranslate nohighlight">\(\mu\)</span>, what we are really
 interested in is the expected squared distance from the mean, <span class="math notranslate nohighlight">\(\mathbb{E}[(X-\mu
-)^2]\)</span>. In our example above, <span class="math notranslate nohighlight">\(\mu=-\)</span>, so the definitions are equivalent.</p>
+)^2]\)</span>. In our example above, <span class="math notranslate nohighlight">\(\mu=0\)</span>, so the definitions are equivalent.</p>
 <p>For a random variable <span class="math notranslate nohighlight">\(X\)</span> with expectation <span class="math notranslate nohighlight">\(\mu\)</span>, the <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is
 defined to be</p>
 <div class="math notranslate nohighlight">
-\[Var(X)=\mathbb{E}[(X-\mu)^2]\]</div>
+\[Var(X)=\mathbb{E}\[(X-\mu)^2\]\]</div>
 <p>The square root <span class="math notranslate nohighlight">\(\sigma(X):=\sqrt{Var(X)}\)</span> is the <strong>standard deviation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>An alternative definition states that <span class="math notranslate nohighlight">\(Var(X)=\mathbb{E}{X^2}-\mu^2\)</span>, which may
 be easier to compute in certain scenarios.</p>

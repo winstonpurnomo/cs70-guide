@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Proofs &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Induction" href="induction.html" />
+    <link rel="prev" title="Logic" href="logic.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Proofs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Induction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/proofs.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-proof">
+   Direct Proof
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proof-by-contraposition">
+   Proof by Contraposition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proof-by-contradiction">
+   Proof by Contradiction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proof-by-cases">
+   Proof by Cases
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="proofs">
+<h1>Proofs<a class="headerlink" href="#proofs" title="Permalink to this headline">¶</a></h1>
+<p>As a CS70 student, you will be taught how to prove logical statements. Proofs
+<em>guarantee</em> a statement is true, and can be very powerful. They are a finite
+sequence of steps called <em>logical deductions</em> which establishes the truth of a
+desired statement. It uses <em>finite</em> means to guarantee the truth of a statement
+with <em>infinitely many cases</em>.</p>
+<p>A proof is often structured as follows. First, there are certain statements
+called <em>axioms</em> that we accept without proof. Starting from these, a proof
+consists of a sequence of logical deductions: simple steps that apply the rules
+of logic. Each statement follows from previous statements.</p>
+<p>This note will first cover each proofing technique, then give an example.</p>
+<div class="admonition-preamble admonition">
+<p class="admonition-title">Preamble</p>
+<p>In this section, we will use the following notation and basic mathematical
+facts.</p>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> denote the set of integers (<span class="math notranslate nohighlight">\(\mathbb{Z}=\{\cdots,-1,0,1,2,
+\cdots\}\)</span>).</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> denote the set of natural numbers (<span class="math notranslate nohighlight">\(\mathbb{N}=\{0,1,2,
+\cdots\}\)</span>).</p></li>
+<li><p>The sum or product of two integers is an integer; we say the set of integers
+is <em>closed</em> under addition and multiplication.</p></li>
+<li><p>The same is true for natural numbers.</p></li>
+<li><p>Given integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we say <span class="math notranslate nohighlight">\(a\)</span> divides <span class="math notranslate nohighlight">\(b\)</span> (denoted <span class="math notranslate nohighlight">\(a|b\)</span>) iff there
+exists an integer <span class="math notranslate nohighlight">\(q\)</span> such that <span class="math notranslate nohighlight">\(b=aq\)</span>. (For example, <span class="math notranslate nohighlight">\(2|10\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(:=\)</span> is used to indicate a definition. (For example, <span class="math notranslate nohighlight">\(q:=6\)</span> defines the
+variable <span class="math notranslate nohighlight">\(q\)</span> as having the value 6).</p></li>
+</ul>
+</div>
+<div class="section" id="direct-proof">
+<h2>Direct Proof<a class="headerlink" href="#direct-proof" title="Permalink to this headline">¶</a></h2>
+<p>A direct proof proceeds as follows. For each <span class="math notranslate nohighlight">\(x\)</span>, the proposition we are trying
+to prove is of the form <span class="math notranslate nohighlight">\(P(x)\implies Q(x)\)</span>. A direct proof of this starts by
+assuming <span class="math notranslate nohighlight">\(P(x)\)</span> for a generic value of <span class="math notranslate nohighlight">\(x\)</span> and eventually concludes <span class="math notranslate nohighlight">\(Q(x)\)</span>
+through a chain of implications.</p>
+<ul class="simple">
+<li><p>Goal: To prove <span class="math notranslate nohighlight">\(P\implies Q\)</span>.</p></li>
+<li><p>Approach:</p>
+<ol class="simple">
+<li><p>Assume <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></li>
+<li><p>Therefore <span class="math notranslate nohighlight">\(Q\)</span>.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>For any <span class="math notranslate nohighlight">\(a, b, c \in\mathbb{Z}\)</span>, if <span class="math notranslate nohighlight">\(a|b\)</span> and <span class="math notranslate nohighlight">\(a|c\)</span>, then <span class="math notranslate nohighlight">\(a|(b+c)\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Assume that <span class="math notranslate nohighlight">\(a|b\)</span> and <span class="math notranslate nohighlight">\(a|c\)</span>. There exists integers <span class="math notranslate nohighlight">\(q_1\)</span> and <span class="math notranslate nohighlight">\(q_2\)</span> such that
+<span class="math notranslate nohighlight">\(b=q_1a\)</span> and <span class="math notranslate nohighlight">\(c=q_2a\)</span>. Then, <span class="math notranslate nohighlight">\(b+c=q_1a+q_2a=(q_1+q_2)a\)</span>. Since <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> is
+closed under addition, we conclude <span class="math notranslate nohighlight">\((q_1+q_2)\in\mathbb{Z}\)</span>, so <span class="math notranslate nohighlight">\(a|(b+c)\)</span> as
+desired.</p>
+</div>
+<p>The key insight in the above proof is that we did not assume any specific values
+for <span class="math notranslate nohighlight">\(a, b\)</span> and <span class="math notranslate nohighlight">\(c\)</span>, so our proof holds for arbitrary values of <span class="math notranslate nohighlight">\(a, b, c\in
+\mathbb{Z}\)</span>!.</p>
+</div>
+<div class="section" id="proof-by-contraposition">
+<h2>Proof by Contraposition<a class="headerlink" href="#proof-by-contraposition" title="Permalink to this headline">¶</a></h2>
+<p>Recall from the previous topic that <span class="math notranslate nohighlight">\((P\implies Q)\equiv(\neg Q\implies\neg P)\)</span>.
+Sometimes, the latter can be easier to prove than the former.</p>
+<ul class="simple">
+<li><p>Goal: To prove <span class="math notranslate nohighlight">\(P\implies Q\)</span>.</p></li>
+<li><p>Approach:</p>
+<ol class="simple">
+<li><p>Assume <span class="math notranslate nohighlight">\(\neg Q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></li>
+<li><p>Therefore <span class="math notranslate nohighlight">\(\neg P\)</span>.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Let <span class="math notranslate nohighlight">\(n\)</span> be a psoitive integer and let <span class="math notranslate nohighlight">\(d\)</span> divide <span class="math notranslate nohighlight">\(n\)</span>. If <span class="math notranslate nohighlight">\(n\)</span> is odd, then <span class="math notranslate nohighlight">\(d\)</span>
+is odd.</p>
+</div>
+<p>Proving this via the technique of direct proof seems difficult, since we have
+no easy way to proceed after assuming <span class="math notranslate nohighlight">\(n\)</span> is odd. But the contraposition
+technique is easier!</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Assume <span class="math notranslate nohighlight">\(d\)</span> is even. By definition, <span class="math notranslate nohighlight">\(d=2k\)</span> for some <span class="math notranslate nohighlight">\(k\in\mathbb{Z}\)</span>. Because
+<span class="math notranslate nohighlight">\(d|n, n=dl\)</span> for some <span class="math notranslate nohighlight">\(l\in\mathbb{Z}\)</span>. Combining these two statements, <span class="math notranslate nohighlight">\(n=dl=
+(2k)l=2(kl)\)</span>. We conclude that <span class="math notranslate nohighlight">\(n\)</span> is even, thus by contraposition, the
+statement is true.</p>
+</div>
+</div>
+<div class="section" id="proof-by-contradiction">
+<h2>Proof by Contradiction<a class="headerlink" href="#proof-by-contradiction" title="Permalink to this headline">¶</a></h2>
+<p>The idea in proof by contradiction is to assume the claim you wish to prove is
+false. Then you show this leads to a conclusion which is utter nonsense: a
+contradiction; hence, the claim must in fact have been true.</p>
+<p>Proof by contradiction is a good technique for proving something you think is
+obviously true.</p>
+<ul class="simple">
+<li><p>Goal: To prove <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p>Approach:</p>
+<ol class="simple">
+<li><p>Assume <span class="math notranslate nohighlight">\(\neg P\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cdots\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg R\)</span></p></li>
+</ol>
+</li>
+<li><p>Conclusion: <span class="math notranslate nohighlight">\(\neg P\implies\neg R\wedge R\)</span>, which is a contradiction,
+therefore <span class="math notranslate nohighlight">\(P\)</span> holds.</p></li>
+</ul>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>There exist no integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> for which <span class="math notranslate nohighlight">\(18a+6b=1\)</span>.</p>
+</div>
+<p>The credit for this proof goes to Dr. Jonathan Senning at Gordon College, from
+Math 231: Transition to Higher Mathematics class from Fall 2014.</p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>Assume there exist integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> for which <span class="math notranslate nohighlight">\(18a+6b=1\)</span>.</p>
+<p>Dividing by 6, we obtain <span class="math notranslate nohighlight">\(3a+b=\frac{1}{6}\)</span>.</p>
+<p>This is a contradiction, since by the closure properties, <span class="math notranslate nohighlight">\(3a+b\)</span> is an integer,
+but <span class="math notranslate nohighlight">\(\frac{1}{6}\)</span> is not. Therefore, it must be that no integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> can
+exist for which <span class="math notranslate nohighlight">\(18a+6b=1\)</span>.</p>
+</div>
+</div>
+<div class="section" id="proof-by-cases">
+<h2>Proof by Cases<a class="headerlink" href="#proof-by-cases" title="Permalink to this headline">¶</a></h2>
+<p>The idea behind proof by cases is that sometimes, when we wish to prove a claim,
+we don’t know which of a set of possible cases is true, but we know at least one
+of the cases is true. We can instead prove <em>all</em> the cases; then, clearly, the
+claim must hold.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>There exist irrational numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> such that <span class="math notranslate nohighlight">\(x^y\)</span> is rational.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We proceed by cases. The statement is quantified by an existential quantifier,
+thus it is sufficient to demonstrate a single example, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, where the
+statement is true. To do so, let <span class="math notranslate nohighlight">\(x=\sqrt{2}\)</span> and <span class="math notranslate nohighlight">\(y=\sqrt{2}\)</span>.</p>
+<p>Let us divide our proof into two cases, exactly one of which must be true:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sqrt{2}^\sqrt{2}\)</span> is irrational, or</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{2}^\sqrt{2}\)</span> is rational</p></li>
+</ol>
+<p>Assume that <span class="math notranslate nohighlight">\(\sqrt{2}^\sqrt{2}\)</span> is rational. Our first guess for <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>
+was not quite right, but now we have a new irrational number,
+<span class="math notranslate nohighlight">\(\sqrt{2}^\sqrt{2}\)</span>. Let <span class="math notranslate nohighlight">\(x=\sqrt{2}^\sqrt{2}\)</span> and <span class="math notranslate nohighlight">\(y=\sqrt{2}\)</span>. Then,</p>
+<div class="math notranslate nohighlight">
+\[x^y=(\sqrt{2}^\sqrt{2})^\sqrt{2}=\sqrt{2}^{\sqrt{2}\sqrt{2}}=\sqrt{2}^2=2\]</div>
+<p>We started with two irrational numbers <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> and obtained a rational <span class="math notranslate nohighlight">\(x^y\)</span>
+in this case. In the other case, our claim is immediately yielded. Thus, since
+one of the two cases must hold, we conclude the theorem must be true.</p>
+</div>
+<p>The above is an example of a <span class="math notranslate nohighlight">\(non-constructive\)</span> proof. We do not know which
+of the two pairs of values we set <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> to is actually true: we’ve
+proven some object <span class="math notranslate nohighlight">\(X\)</span> exists, without explicitly revealing what <span class="math notranslate nohighlight">\(X\)</span> is!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="logic.html" title="previous page">Logic</a>
+    <a class='right-next' id="next-link" href="induction.html" title="next page">Induction</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

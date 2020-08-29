@@ -43,7 +43,7 @@ the desired result.
 We can define a slicker proof using the indicator function $I\{\bullet\}$,
 defined as:
 
-$$I{statement}=\begin{cases}1,&\text{if statement is true}\\0,&\text{if
+$$I\{statement\}=\begin{cases}1,&\text{if statement is true}\\0,&\text{if
 statement is false}\end{cases}$$
 
 ```{admonition} Proof
@@ -67,7 +67,7 @@ from the fact that $I\{X\geq c\}$ is an indicator random variable.
 Let $Y$ be an arbitrary random variable with finite mean. For any positive
 constants $c$ and $r$,
 
-$$\mathbb{P}[|Y|\geq c]\leq\frac{\mathbb{E}[|Y|7r]}{c^r}$$.
+$$\mathbb{P}[|Y|\geq c]\leq\frac{\mathbb{E}[|Y|^r]}{c^r}$$.
 
 ```{admonition} Proof
 For $c>0$ and $r>0$ (if $r$ were negative, the last inequality below does not
@@ -83,7 +83,7 @@ Divde by $c^r$ to find the desired result.
 ```
 
 ## Chebyshev's Inequality
-For a random variable $X$ with a finite expectation$\mathbb{E}[X]=\mu$,
+For a random variable $X$ with a finite expectation $\mathbb{E}[X]=\mu$,
 
 $$\mathbb{P}[|X-\mu|\geq c]\leq \frac{Var(X)}{c^2}$$
 
@@ -107,7 +107,7 @@ Let $Y=X-\mu$. Then, since $|Y|^2=(X-\mu)^2$, we have $\mathbb{E}[|Y|^2]=\mathbb
 
 $$|X-\mu|\geq c\implies Y=(X-\mu)^2\geq c^2$$
 
-follows from apllying Generalized Markov's Inequality to $Y=X-\mu$ with $r=2$.
+follows from applying Generalized Markov's Inequality to $Y=X-\mu$ with $r=2$.
 ```
 
 Stopping to consider what Chebyshev's Inequality means, it tells us that the
