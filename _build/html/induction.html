@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Induction &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sets" href="sets.html" />
+    <link rel="prev" title="Proofs" href="proofs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="proofs.html">
+     Proofs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Induction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="modulo.html">
+   Modular Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/induction.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strengthening-the-inductive-hypothesis">
+   Strengthening the Inductive Hypothesis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strong-induction">
+   Strong Induction
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="induction">
+<h1>Induction<a class="headerlink" href="#induction" title="Permalink to this headline">¶</a></h1>
+<p>Mathematical nduction is an additional method of proofing that we will cover in
+further detail. Induction is a tool that can be used to establish the truth of a
+statement over all natural numbers.</p>
+<ul class="simple">
+<li><p>Goal: To prove <span class="math notranslate nohighlight">\(P\)</span> for all values of <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Approach:</p>
+<ol class="simple">
+<li><p>Prove <span class="math notranslate nohighlight">\(P\)</span> is true for a base case (usually <span class="math notranslate nohighlight">\(n=0\)</span> or $n=1).</p></li>
+<li><p>Assume <span class="math notranslate nohighlight">\(P\)</span> is true for some arbitrary <span class="math notranslate nohighlight">\(n=k\)</span>.</p></li>
+<li><p>Show <span class="math notranslate nohighlight">\(P\)</span> is true for <span class="math notranslate nohighlight">\(n=k+1\)</span>, assuming <span class="math notranslate nohighlight">\(P\)</span> holds for <span class="math notranslate nohighlight">\(n=k\)</span>.</p></li>
+</ol>
+</li>
+</ul>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<div class="math notranslate nohighlight">
+\[\forall n\in\mathbb{N}, \sum_{i=0}^ni=\frac{n(n+1)}{2}\]</div>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em> (<span class="math notranslate nohighlight">\(n=0\)</span>): <span class="math notranslate nohighlight">\(\sum_{i=0}^0i=0=\frac{0(0+1)}{2}\)</span>. The base case holds.</p>
+<p><em>Induction Hypothesis</em>: For an arbitrary <span class="math notranslate nohighlight">\(n=k\geq 0\)</span>, assume that <span class="math notranslate nohighlight">\(\sum_{i=0}^k
+i=\frac{k(k+1)}{2}\)</span>.</p>
+<p><em>Inductive Step</em>:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=0}^{k+1}i=\sum_{i=0}^{k}i+(k+1)=\frac{k(k+1)}{2}+(k+1)=\frac{k(k+1)+
+2(k+1)}{2}=\frac{(k+1)(k+2)}{2}\]</div>
+<p>where the second equality follows from the Induction Hypothesis. By the
+principle of mathematical induction, the claim follows.</p>
+</div>
+<div class="section" id="strengthening-the-inductive-hypothesis">
+<h2>Strengthening the Inductive Hypothesis<a class="headerlink" href="#strengthening-the-inductive-hypothesis" title="Permalink to this headline">¶</a></h2>
+<p>When using induction, it is possible to choose a statement that is too broad or
+general to prove. For example, suppose we were proving the following statement:
+<em>for all <span class="math notranslate nohighlight">\(n\geq 1\)</span>, the sum of the first <span class="math notranslate nohighlight">\(n\)</span> odd numbers is a perfect square.</em></p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=1\)</span>): This holds.</p>
+<p><em>Induction Hypothesis</em>: Assume the sum of the first <span class="math notranslate nohighlight">\(k\)</span> odd numbers is a perfect
+square, say <span class="math notranslate nohighlight">\(m^2\)</span>.</p>
+<p><em>Inductive Step</em>: The <span class="math notranslate nohighlight">\((k+1)^{st}\)</span> odd number is <span class="math notranslate nohighlight">\(2k+1\)</span>. By the I.H., the sum
+of the first <span class="math notranslate nohighlight">\(k+1\)</span> odd numbers is <span class="math notranslate nohighlight">\(m^2+2k+1\)</span>, which doesn’t prove anything.</p>
+</div>
+<p>Now, if we strengthened the inductive hypothesis to:
+<em>for all <span class="math notranslate nohighlight">\(n\geq 1\)</span>, the sum of the first <span class="math notranslate nohighlight">\(n\)</span> odd numbers is <span class="math notranslate nohighlight">\(n^2\)</span>.</em></p>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=1\)</span>): This holds.</p>
+<p><em>Induction Hypothesis</em>: Assume the sum of the first <span class="math notranslate nohighlight">\(k\)</span> odd numbers is a perfect
+square <span class="math notranslate nohighlight">\(k^2\)</span>.</p>
+<p><em>Inductive Step</em>: The <span class="math notranslate nohighlight">\((k+1)^{st}\)</span> odd number is <span class="math notranslate nohighlight">\(2k+1\)</span>. By the I.H., the sum
+of the first <span class="math notranslate nohighlight">\(k+1\)</span> odd numbers is <span class="math notranslate nohighlight">\(k^2+2k+1=(k+1)^2\)</span>. Thus, bu the principle of
+induction, the theorem holds.</p>
+</div>
+</div>
+<div class="section" id="strong-induction">
+<h2>Strong Induction<a class="headerlink" href="#strong-induction" title="Permalink to this headline">¶</a></h2>
+<p>What we have done so far is a notion of induction known as <em>simple</em> or <em>weak</em>
+induction. We will now use a different notion called <em>strong</em> induction, where
+we modify the induction hypothesis: instead of assuming just <span class="math notranslate nohighlight">\(P(k)\)</span> is true, we
+assume the stronger statement that <span class="math notranslate nohighlight">\(P(i\leq k), \forall i \in\mathbb{N}\)</span> is
+true.</p>
+<p>There is no difference in the power of strong and weak induction: there are no
+statements you can only prove with strong induction and not weak induction. But
+strong induction can make proofs easier and more concise.</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>Every natural number <span class="math notranslate nohighlight">\(n&gt;1\)</span> can be written as a product of one or more primes.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p><em>Base case</em>(<span class="math notranslate nohighlight">\(n=2\)</span>): Clearly, <span class="math notranslate nohighlight">\(P(2)\)</span> holds since 2 is a prime.</p>
+<p><em>Induction Hypothesis</em>: Assume <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all <span class="math notranslate nohighlight">\(2\leq n\leq k\)</span>.</p>
+<p><em>Inductive Step</em>: We have two cases, either <span class="math notranslate nohighlight">\(k+1\)</span> is a prime number, or it is
+not.</p>
+<p>In the first case, if <span class="math notranslate nohighlight">\(k+1\)</span> is a prime number, then we are done as it is the
+product of one prime, itself.</p>
+<p>In the second case, if <span class="math notranslate nohighlight">\(k+1\)</span> is not a prime, then by definition, <span class="math notranslate nohighlight">\(k+1=xy\)</span> for
+some <span class="math notranslate nohighlight">\(x, y\in\mathbb{Z}^+\)</span> satisfying <span class="math notranslate nohighlight">\(1&lt;x,y&lt;k+1\)</span>. By the I.H., <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> can
+each be written as the product of primes (since <span class="math notranslate nohighlight">\(x,y\leq n\)</span>). This therefore
+implies <span class="math notranslate nohighlight">\(k+1\)</span> can also be written as a product of primes.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="proofs.html" title="previous page">Proofs</a>
+    <a class='right-next' id="next-link" href="sets.html" title="next page">Sets</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

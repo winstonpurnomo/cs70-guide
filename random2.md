@@ -30,9 +30,10 @@ will square root it in the end.
 
 Now, we claim that the expected square distance after $n$ steps is equal to $n$.
 
+
 ```{admonition} Proof
 $$\mathbb{E}[S_n^2]=\mathbb{E}[(X_1+X_2+\cdots+X_n)^2]=\mathbb{E}[\sum_{i=1}^n
-X_i^2+2\sum_{i<j}X_iX_j]+\sum_{i=1}^n\mathbb{E}[X_i^2]+2\sum_[i<j]\mathbb{E}[X_i
+X_i^2+2\sum_{i<j}X_iX_j]+\sum_{i=1}^n\mathbb{E}[X_i^2]+2\sum_{i<j}\mathbb{E}[X_i
 X_j]$$.
 
 To proceed, we must compute $\mathbb{E}[X_i^2]$ and $\mathbb{E}[X_iX_j]$ for $i
@@ -40,7 +41,7 @@ To proceed, we must compute $\mathbb{E}[X_i^2]$ and $\mathbb{E}[X_iX_j]$ for $i
 $\mathbb{E}[X_iX_j]$, note $X_iX_j =+1$ when $X_i=X_j=+1$ or $X_i=X_j=-1$, and
 otherwise $X_iX_j=-1$. Thus,
 
-$\mathbb{P}[X_iX_j=1]=\mathbb{P}[(X_i=X_j=+1)\vee(X_i=X_j=-1)]=\mathbb{P}[X_i=
+$$\mathbb{P}[X_iX_j=1]=\mathbb{P}[(X_i=X_j=+1)\vee(X_i=X_j=-1)]=\mathbb{P}[X_i=
 X_j=+1]+\mathbb{P}[X_i=X_j=-1]\\=\mathbb{P}[X_i=+1]\times\mathbb{P}[X_j=+1]+
 \mathbb{P}[X_i=-1]\times\mathbb{P}[X_j=-1]=\frac{1}{4}+\frac{1}{4}=\frac{1}{2}$$
 
@@ -57,12 +58,12 @@ that $\mathbb{E}[|S_n|]=\sqrt{\mathbb{E}[S_n^2]}=\sqrt{n}$.
 
 For more general random variables $X$ with expectation $\mu$, what we are really
 interested in is the expected squared distance from the mean, $\mathbb{E}[(X-\mu
-)^2]$. In our example above, $\mu=-$, so the definitions are equivalent.
+)^2]$. In our example above, $\mu=0$, so the definitions are equivalent.
 
 For a random variable $X$ with expectation $\mu$, the **variance** of $X$ is
 defined to be
 
-$$Var(X)=\mathbb{E}[(X-\mu)^2]$$.
+$$Var(X)=\mathbb{E}\[(X-\mu)^2\]$$.
 
 The square root $\sigma(X):=\sqrt{Var(X)}$ is the **standard deviation** of $X$.
 

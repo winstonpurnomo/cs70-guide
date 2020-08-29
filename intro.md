@@ -18,4 +18,4 @@ viewing. To ensure the best possible experience, use the "download as PDF"
 functionality in the top-right corner of each page.
 ```
 
-Check out my [page](winstonpurnomo.github.io/homepage)!
+Check out my page here <winstonpurnomo.github.io/homepage>!

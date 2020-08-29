@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Modular Arithmetic &#8212; CS70 Discrete Math and Probability Theory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RSA Encryption" href="rsa.html" />
+    <link rel="prev" title="Graph Theory" href="graphs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CS70 Discrete Math and Probability Theory</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to CS70
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="logic.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sets.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graphs.html">
+   Graph Theory
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modular Arithmetic
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rsa.html">
+     RSA Encryption
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="polynomials.html">
+   Polynomials
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="combinatorics.html">
+   Combinatorics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/modulo.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computation">
+   Computation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-representation">
+   Set Representation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponentiation">
+   Exponentiation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bijections">
+   Bijections
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inverses">
+   Inverses
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euclid-s-algorithm">
+     Euclid’s Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extended-euclid-s-algorithm">
+     Extended Euclid’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chinese-remainder-theorem">
+   Chinese Remainder Theorem
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="modular-arithmetic">
+<h1>Modular Arithmetic<a class="headerlink" href="#modular-arithmetic" title="Permalink to this headline">¶</a></h1>
+<p>Modular arithmetic is a way of reducing problems to work on a smaller range of
+numbers <span class="math notranslate nohighlight">\(\{0,1,\cdots,N-1\}\)</span>, and wraps around when you try to leave this range;
+for example, the time of day (where <span class="math notranslate nohighlight">\(N=12\)</span>).</p>
+<p>We define <span class="math notranslate nohighlight">\(x \pmod{m}\)</span> (“x modulo m”) to be the remainder <span class="math notranslate nohighlight">\(r\)</span> when we divide <span class="math notranslate nohighlight">\(x\)</span>
+by <span class="math notranslate nohighlight">\(m\)</span>. <span class="math notranslate nohighlight">\((x \pmod{m}=r)\implies(x=mq+r)\)</span> where <span class="math notranslate nohighlight">\(0\leq r\leq m-1\)</span> and <span class="math notranslate nohighlight">\(q\)</span> is an
+integer. Thus, <span class="math notranslate nohighlight">\(16\pmod{12}\equiv 4\)</span> and <span class="math notranslate nohighlight">\(70\pmod{5}\equiv 0\)</span>.</p>
+<div class="section" id="computation">
+<h2>Computation<a class="headerlink" href="#computation" title="Permalink to this headline">¶</a></h2>
+<p>Notice that <span class="math notranslate nohighlight">\((x+y)\pmod{m} \equiv x\pmod{m}+y\pmod{m}\)</span>. For example, if <span class="math notranslate nohighlight">\(x=70, 
+y=61\)</span> and <span class="math notranslate nohighlight">\(m=20\)</span>, we can either do:</p>
+<div class="math notranslate nohighlight">
+\[70+61\pmod{20}=131\pmod{20}\equiv11\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[70\pmod{20}+61\pmod{20}\equiv10+1=11\]</div>
+<p>Likewise, we could save significant effort with this on multiplification: <span class="math notranslate nohighlight">\((x
+\times y)\pmod{m} \equiv x\pmod m + y\pmod m\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[70\times61\pmod{20}=4270\pmod{20}\equiv10\]</div>
+<div class="math notranslate nohighlight">
+\[70\pmod{20}\times61\pmod{20}\equiv10\times1=10\]</div>
+<p>More generally, while carrying out any sequence of additions, subtractions or
+multiplifications mod m, we can get the same answer if we reduce any
+intermediate results, which can considerably simplify calculations.</p>
+</div>
+<div class="section" id="set-representation">
+<h2>Set Representation<a class="headerlink" href="#set-representation" title="Permalink to this headline">¶</a></h2>
+<p>There is an alternative view of modular arithmetic that can help make this more
+understandable. For any integer <span class="math notranslate nohighlight">\(m\)</span>, we say <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are congruent modulo <span class="math notranslate nohighlight">\(m\)</span>
+if they differ by a multiple of <span class="math notranslate nohighlight">\(m\)</span>, or in symbols,</p>
+<div class="math notranslate nohighlight">
+\[x\equiv y\pmod{m}\iff m\text{ divides }(x-y)\]</div>
+<p>For example, 31 and 3 are congruent modulo 14 because 14 divides <span class="math notranslate nohighlight">\(31-3\)</span>. We can
+also write <span class="math notranslate nohighlight">\(22 \equiv -2\pmod{12}\)</span>. Notice that congruent modulos have the same
+remainder modulo <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>In general, if we work modulo <span class="math notranslate nohighlight">\(m\)</span>, we get <span class="math notranslate nohighlight">\(m\)</span> such disjoint sets whose union is
+the set of all integer: these are often called <em>residue classes mod m</em>. We can
+think of each set as represented by the unique element it contains in the range
+<span class="math notranslate nohighlight">\((0, \cdots, m-1)\)</span>. The set represented by element <span class="math notranslate nohighlight">\(i\)</span> would be all numbers <span class="math notranslate nohighlight">\(z\)</span>
+such that <span class="math notranslate nohighlight">\(z=mx+i\)</span> for some integer <span class="math notranslate nohighlight">\(x\)</span>. Observe all of these numbers have
+remainder <span class="math notranslate nohighlight">\(i\)</span> when divided by <span class="math notranslate nohighlight">\(m\)</span>; therefore they are congruent modulo <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>With this knowledge, we will prove our statement above in the “Computation”
+section:</p>
+<div class="admonition-theorem admonition">
+<p class="admonition-title">Theorem</p>
+<p>If <span class="math notranslate nohighlight">\(a\equiv c \pmod{m}\)</span> and <span class="math notranslate nohighlight">\(b\equiv d\pmod{m}\)</span>, then <span class="math notranslate nohighlight">\(a+b\equiv c+d\pmod{m}\)</span>.</p>
+</div>
+<div class="admonition-proof admonition">
+<p class="admonition-title">Proof</p>
+<p>We know that <span class="math notranslate nohighlight">\(c=a+km\)</span> and <span class="math notranslate nohighlight">\(d=b+lm\)</span> for integers <span class="math notranslate nohighlight">\(k, l\)</span>, so <span class="math notranslate nohighlight">\(c+d=a_km+b+lm=
+a+b+(k+l)m\)</span>, which means that <span class="math notranslate nohighlight">\(a+b\equiv c+d\pmod{m}\)</span>. The proof for
+multiplication is similar.</p>
+</div>
+</div>
+<div class="section" id="exponentiation">
+<h2>Exponentiation<a class="headerlink" href="#exponentiation" title="Permalink to this headline">¶</a></h2>
+<p>Another standard operation in arithmetic algorithms is raising one number to a
+power modulo another number: <span class="math notranslate nohighlight">\(x^y\pmod{m}\)</span>, where <span class="math notranslate nohighlight">\(x,y,m\)</span> are natural numbers
+and <span class="math notranslate nohighlight">\(m&gt;0\)</span>? Here is a fast approach:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">algorithm</span> <span class="n">mod</span><span class="o">-</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span>
+		<span class="k">return</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="n">z</span><span class="o">=</span><span class="n">mod</span><span class="o">-</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="n">div</span> <span class="mi">2</span><span class="p">,</span><span class="n">m</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">y</span> <span class="n">mod</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span>
+			<span class="k">return</span><span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="n">z</span> <span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+		<span class="k">else</span>
+			<span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">*</span> <span class="n">z</span> <span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This algorithm uses the fact any <span class="math notranslate nohighlight">\(y&gt;0\)</span> can be written as <span class="math notranslate nohighlight">\(y=2a\)</span> or <span class="math notranslate nohighlight">\(y=2a+1\)</span>,
+where <span class="math notranslate nohighlight">\(a=\lfloor \frac{y}{2}\rfloor\)</span> (which we have written as <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">div</span> <span class="pre">2</span></code> in the
+above pseudo-code), plus the facts:</p>
+<div class="math notranslate nohighlight">
+\[x^{2a}=(x^a)^2,\text{ and } x^{2a+1}=x(x^a)^2\]</div>
+<p>The number of recursive calls is exactly equal to the number of bits <span class="math notranslate nohighlight">\(n\)</span> in
+<span class="math notranslate nohighlight">\(y\)</span>. If we charge only constant time for each arithmetic operation, the running
+time for <code class="docutils literal notranslate"><span class="pre">mod-exp</span></code> is <span class="math notranslate nohighlight">\(O(n)\)</span>, which is very efficient!</p>
+<p>This is of course, only an elementary approach to understanding runtime. A
+fuller analysis of such algorithms is performed in CS170.</p>
+</div>
+<div class="section" id="bijections">
+<h2>Bijections<a class="headerlink" href="#bijections" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inverses">
+<h2>Inverses<a class="headerlink" href="#inverses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="euclid-s-algorithm">
+<h3>Euclid’s Algorithm<a class="headerlink" href="#euclid-s-algorithm" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="extended-euclid-s-algorithm">
+<h3>Extended Euclid’s Algorithm<a class="headerlink" href="#extended-euclid-s-algorithm" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="chinese-remainder-theorem">
+<h2>Chinese Remainder Theorem<a class="headerlink" href="#chinese-remainder-theorem" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="graphs.html" title="previous page">Graph Theory</a>
+    <a class='right-next' id="next-link" href="rsa.html" title="next page">RSA Encryption</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Winston Purnomo<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

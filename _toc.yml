@@ -1,4 +1,21 @@
 - file: intro
+- file: logic
+  sections:
+    - file: proofs
+    - file: induction
+- file: sets
+  sections:
+    - file: functions
+    - file: cardinality
+    - file: computability
+- file: graphs
+- file: modulo
+  sections:
+    - file: rsa
+- file: polynomials
+  sections:
+    - file: secretshare
+    - file: ecc
 - file: combinatorics
   sections:
     - file: definitions

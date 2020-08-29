@@ -56,5 +56,5 @@ defined our probability space. The sum of probabilities of all outcomes is 1.
 
 Let's supposed the contesant decides to switch doors. In order to win, their
 initial choice cannot be equal to the prize fdoor. All outcomes of this type
-cannnot be the prize door, and all outcomes of thys type correspond to a win for
+cannnot be the prize door, and all outcomes of this type correspond to a win for
 the contestant. $\mathbb{P}[\omega]=6\times\frac{1}{9}=\frac{2}{3}$
